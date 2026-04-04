@@ -9,616 +9,120 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:        #0d0d0b;
-    --bg2:       #131310;
-    --bg3:       #1a1a16;
-    --rule:      #2a2a24;
-    --amber:     #e8a020;
-    --amber-dim: #7a5210;
-    --cream:     #f0ead8;
-    --muted:     #7a7a6a;
-    --red:       #c0392b;
+    --bg: #0d0d0b; --bg2: #131310; --bg3: #1a1a16;
+    --rule: #2a2a24; --amber: #e8a020; --amber-dim: #7a5210;
+    --cream: #f0ead8; --muted: #7a7a6a;
     --font-display: 'Bebas Neue', sans-serif;
-    --font-body:    'Libre Baskerville', serif;
-    --font-mono:    'DM Mono', monospace;
+    --font-body: 'Libre Baskerville', serif;
+    --font-mono: 'DM Mono', monospace;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--cream); font-family: var(--font-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
 
-  body {
-    background: var(--bg);
-    color: var(--cream);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* ── GRAIN OVERLAY ── */
   body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
+    content: ''; position: fixed; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.035;
-    pointer-events: none;
-    z-index: 9999;
+    opacity: 0.035; pointer-events: none; z-index: 9999;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+    background-size: 60px 60px; opacity: 0.18; pointer-events: none; z-index: 0;
   }
 
-  /* ── HERO BG ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+  /* HEADER */
   header {
+    position: relative; z-index: 1; padding: 3rem 0 0;
+    border-bottom: 1px solid var(--rule);
     background-image: url('img/hero.jpg');
-    background-size: cover;
-    background-position: center 40%;
-    position: relative;
+    background-size: cover; background-position: center 40%;
   }
   header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(13,13,11,0.82) 0%, rgba(13,13,11,0.92) 100%);
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(13,13,11,0.85) 0%, rgba(13,13,11,0.95) 100%);
     z-index: 0;
   }
-  header > * { position: relative; z-index: 1; }
-  .header-inner { position: relative; z-index: 1; }
-
-  /* ── GRID LINES (blueprint) ── */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--rule) 1px, transparent 1px),
-      linear-gradient(90deg, var(--rule) 1px, transparent 1px);
-    background-size: 60px 60px;
-    opacity: 0.18;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* ── LAYOUT ── */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ── HEADER ── */
-  header {
-    position: relative;
-    z-index: 1;
-    padding: 3rem 0 0;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-  }
-
-  .issue-tag {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--amber);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border: 1px solid var(--amber-dim);
-    padding: 0.25rem 0.6rem;
-    margin-bottom: 1rem;
-    display: inline-block;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
+  .issue-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid var(--amber-dim); padding: 0.25rem 0.6rem; display: inline-block; }
+  .nav-links { display: flex; gap: 2rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .nav-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--amber); }
-
-  .headline-block {
-    border-top: 3px solid var(--amber);
-    padding-top: 1.5rem;
-  }
-
-  h1 {
-    font-family: var(--font-display);
-    font-size: clamp(5rem, 12vw, 10rem);
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-    color: var(--cream);
-    margin-bottom: 0.2rem;
-  }
-
-  .name-sub {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--amber);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-  }
-
-  .header-columns {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-top: 1px solid var(--rule);
-  }
-
-  .header-col h4 {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.3rem;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .header-col p {
-    font-size: 0.85rem;
-    color: var(--cream);
-    line-height: 1.5;
-  }
-
-  .header-col .stat {
-    font-family: var(--font-display);
-    font-size: 2.2rem;
-    color: var(--amber);
-    line-height: 1;
-    margin-bottom: 0.1rem;
-  }
-
-  .header-col .stat-label {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-
-  .contact-links a {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--cream);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .headline-block { border-top: 3px solid var(--amber); padding-top: 1.5rem; }
+  h1 { font-family: var(--font-display); font-size: clamp(5rem, 12vw, 10rem); line-height: 0.9; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 0.2rem; }
+  .name-sub { font-family: var(--font-mono); font-size: 0.75rem; color: var(--amber); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; }
+  .header-columns { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--rule); }
+  .header-col h4 { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--rule); }
+  .header-col p { font-size: 0.85rem; color: var(--cream); line-height: 1.5; }
+  .header-col .stat { font-family: var(--font-display); font-size: 2.2rem; color: var(--amber); line-height: 1; margin-bottom: 0.1rem; }
+  .header-col .stat-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.3rem; }
+  .contact-links a { font-family: var(--font-mono); font-size: 0.72rem; color: var(--cream); text-decoration: none; transition: color 0.2s; }
   .contact-links a:hover { color: var(--amber); }
 
-  /* ── SECTION HEADERS ── */
-  .section {
-    position: relative;
-    z-index: 1;
-    padding: 4rem 0;
-    border-bottom: 1px solid var(--rule);
-  }
+  /* SECTIONS */
+  .section { position: relative; z-index: 1; padding: 4rem 0; border-bottom: 1px solid var(--rule); }
+  .section-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--amber); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .section-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; color: var(--cream); margin-bottom: 3rem; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
 
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--amber);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
+  /* PROJECT CARDS */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rule); }
+  .project-card { border: 1px solid var(--rule); background: var(--bg2); display: flex; flex-direction: column; transition: background 0.25s; overflow: hidden; }
+  .project-card:hover { background: var(--bg3); }
+  .project-card.featured { grid-column: span 2; flex-direction: row; }
+  .card-image { width: 100%; aspect-ratio: 16/9; background: var(--bg3); overflow: hidden; border-bottom: 1px solid var(--rule); flex-shrink: 0; }
+  .project-card.featured .card-image { width: 45%; aspect-ratio: unset; border-bottom: none; border-right: 1px solid var(--rule); }
+  .card-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.3s, transform 0.4s; display: block; }
+  .project-card:hover .card-image img { opacity: 1; transform: scale(1.02); }
+  .card-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+  .card-index { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+  .card-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.58rem; color: var(--amber); border: 1px solid var(--amber-dim); padding: 0.15rem 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; margin-right: 0.4rem; }
+  .card-title { font-family: var(--font-display); font-size: 1.7rem; line-height: 1.05; color: var(--cream); margin-bottom: 0.75rem; }
+  .card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
 
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1;
-    color: var(--cream);
-    margin-bottom: 3rem;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 1rem;
-  }
+  /* GIST */
+  .gist-block { background: #0a0a08; border: 1px solid var(--rule); border-left: 2px solid var(--amber); padding: 0.85rem 1rem; margin-top: auto; }
+  .gist-label { font-family: var(--font-mono); font-size: 0.58rem; color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .gist-line { font-family: var(--font-mono); font-size: 0.72rem; color: #9a9a8a; line-height: 1.6; display: flex; gap: 0.75rem; }
+  .gist-line .key { color: var(--amber); min-width: 100px; flex-shrink: 0; }
+  .gist-line .val { color: var(--cream); }
 
-  /* ── PROJECT CARDS ── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border: 1px solid var(--rule);
-  }
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .skill-group { background: var(--bg2); padding: 1.5rem; }
+  .skill-group h4 { font-family: var(--font-mono); font-size: 0.6rem; color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
+  .skill-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+  .skill-name { font-family: var(--font-mono); font-size: 0.72rem; color: var(--cream); min-width: 120px; }
+  .skill-bar-track { flex: 1; height: 2px; background: var(--rule); position: relative; }
+  .skill-bar-fill { height: 100%; background: var(--amber); position: relative; }
+  .skill-bar-fill::after { content: ''; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; background: var(--amber); transform: rotate(45deg); }
 
-  .project-card {
-    border: 1px solid var(--rule);
-    background: var(--bg2);
-    display: flex;
-    flex-direction: column;
-    transition: background 0.25s;
-    position: relative;
-    overflow: hidden;
-  }
+  /* EXPERIENCE */
+  .experience-item { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--rule); }
+  .exp-company { font-family: var(--font-display); font-size: 1.3rem; color: var(--amber); line-height: 1.1; margin-bottom: 0.3rem; }
+  .exp-period { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .exp-role { font-family: var(--font-display); font-size: 1.6rem; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.05; }
+  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .exp-points li { font-size: 0.82rem; color: var(--muted); padding-left: 1rem; position: relative; line-height: 1.6; }
+  .exp-points li::before { content: '—'; position: absolute; left: 0; color: var(--amber); }
 
-  .project-card:hover {
-    background: var(--bg3);
-  }
+  /* EDUCATION */
+  .edu-row { display: flex; justify-content: space-between; align-items: baseline; padding: 1.2rem 0; border-bottom: 1px solid var(--rule); gap: 1rem; }
+  .edu-inst { font-family: var(--font-display); font-size: 1.4rem; color: var(--cream); }
+  .edu-degree { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; flex: 1; padding: 0 2rem; }
+  .edu-score { font-family: var(--font-display); font-size: 1.8rem; color: var(--amber); }
 
-  .project-card.featured {
-    grid-column: span 2;
-    flex-direction: row;
-  }
-
-  .card-image {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: var(--bg3);
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--rule);
-    flex-shrink: 0;
-  }
-
-  .project-card.featured .card-image {
-    width: 45%;
-    aspect-ratio: unset;
-    border-bottom: none;
-    border-right: 1px solid var(--rule);
-  }
-
-  /* placeholder image styling */
-  .card-image-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.5rem;
-    color: var(--amber-dim);
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    position: relative;
-  }
-
-  .card-image-placeholder::before {
-    content: '';
-    position: absolute;
-    inset: 20px;
-    border: 1px dashed var(--amber-dim);
-    opacity: 0.4;
-  }
-
-  .card-image-placeholder svg {
-    opacity: 0.3;
-  }
-
-  /* Real images */
-  .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.85;
-    transition: opacity 0.3s, transform 0.4s;
-  }
-  .project-card:hover .card-image img {
-    opacity: 1;
-    transform: scale(1.02);
-  }
-
-  .card-body {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  .card-index {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.5rem;
-  }
-
-  .card-tag {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    color: var(--amber);
-    border: 1px solid var(--amber-dim);
-    padding: 0.15rem 0.5rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-    margin-right: 0.4rem;
-  }
-
-  .card-title {
-    font-family: var(--font-display);
-    font-size: 1.7rem;
-    line-height: 1.05;
-    color: var(--cream);
-    margin-bottom: 0.75rem;
-  }
-
-  .card-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.65;
-    flex: 1;
-    margin-bottom: 1.25rem;
-  }
-
-  /* ── GIST BLOCK ── */
-  .gist-block {
-    background: #0a0a08;
-    border: 1px solid var(--rule);
-    border-left: 2px solid var(--amber);
-    padding: 0.85rem 1rem;
-    margin-top: auto;
-  }
-
-  .gist-label {
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    color: var(--amber);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
-  }
-
-  .gist-line {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: #9a9a8a;
-    line-height: 1.6;
-    display: flex;
-    gap: 0.75rem;
-  }
-
-  .gist-line .key {
-    color: var(--amber);
-    min-width: 80px;
-    flex-shrink: 0;
-  }
-
-  .gist-line .val {
-    color: var(--cream);
-  }
-
-  /* ── SKILLS SECTION ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--rule);
-    border: 1px solid var(--rule);
-  }
-
-  .skill-group {
-    background: var(--bg2);
-    padding: 1.5rem;
-  }
-
-  .skill-group h4 {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--amber);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .skill-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.6rem;
-  }
-
-  .skill-name {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--cream);
-    min-width: 120px;
-  }
-
-  .skill-bar-track {
-    flex: 1;
-    height: 2px;
-    background: var(--rule);
-    position: relative;
-  }
-
-  .skill-bar-fill {
-    height: 100%;
-    background: var(--amber);
-    position: relative;
-  }
-
-  .skill-bar-fill::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: -3px;
-    width: 7px;
-    height: 7px;
-    background: var(--amber);
-    transform: rotate(45deg);
-  }
-
-  /* ── EXPERIENCE SECTION ── */
-  .experience-item {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .exp-meta {
-    padding-top: 0.2rem;
-  }
-
-  .exp-company {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--amber);
-    line-height: 1.1;
-    margin-bottom: 0.3rem;
-  }
-
-  .exp-period {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .exp-role {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    color: var(--cream);
-    margin-bottom: 0.75rem;
-    line-height: 1.05;
-  }
-
-  .exp-points {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .exp-points li {
-    font-size: 0.82rem;
-    color: var(--muted);
-    padding-left: 1rem;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .exp-points li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--amber);
-  }
-
-  /* ── EDUCATION ── */
-  .edu-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid var(--rule);
-    gap: 1rem;
-  }
-
-  .edu-inst {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    color: var(--cream);
-  }
-
-  .edu-degree {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    flex: 1;
-    padding: 0 2rem;
-  }
-
-  .edu-score {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    color: var(--amber);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    position: relative;
-    z-index: 1;
-    padding: 3rem 0;
-    text-align: center;
-    border-top: 3px solid var(--amber);
-  }
-
-  .footer-name {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    color: var(--cream);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-sub {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 1.5rem;
-  }
-
-  .footer-links a {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
+  /* FOOTER */
+  footer { position: relative; z-index: 1; padding: 3rem 0; text-align: center; border-top: 3px solid var(--amber); }
+  .footer-name { font-family: var(--font-display); font-size: 3rem; color: var(--cream); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+  .footer-sub { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; }
+  .footer-links a { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
   .footer-links a:hover { color: var(--amber); }
 
-  /* ── SCROLL REVEAL ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .header-columns { grid-template-columns: 1fr 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
@@ -630,233 +134,195 @@
     .nav-links { display: none; }
   }
 
-  /* page load animation */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   header { animation: fadeInUp 0.8s ease forwards; }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
 <header>
   <div class="header-inner">
     <div class="header-top">
-      <div>
-        <div class="issue-tag">Portfolio · 2025 Edition · Mechanical Engineer</div>
-      </div>
+      <div><div class="issue-tag">Portfolio &middot; 2025 Edition &middot; Mechanical Engineer</div></div>
       <nav class="nav-links">
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
-        <a href="/cdn-cgi/l/email-protection#bcddd2d5cfd48e8b8d8c85fcdbd1ddd5d092dfd3d1">Contact</a>
+        <a href="mailto:anish27109@gmail.com">Contact</a>
       </nav>
     </div>
-
     <div class="headline-block">
       <h1>ANISH<br>DHAR</h1>
-      <p class="name-sub">Mechanical Engineer · Pune, India</p>
+      <p class="name-sub">Mechanical Engineer &middot; Pune, India</p>
     </div>
-
     <div class="header-columns">
       <div class="header-col">
         <h4>About</h4>
-        <p>Early-career mechanical engineer with hands-on ownership of pharma capital equipment, competitive motorsport CAE, and precision machining. Designed an INR 4.5 Cr total-containment bin-washing system through to manufacturing release. Proficient in Autodesk Inventor, ANSYS FEA/thermal, GD&T, and additive manufacturing.</p>
+        <p>Early-career mechanical engineer with hands-on ownership of pharma capital equipment, competitive motorsport CAE, and precision machining. Designed an INR 4.5 Cr total-containment bin-washing system through to manufacturing release. Proficient in Autodesk Inventor, ANSYS FEA/thermal, GD&amp;T, and additive manufacturing.</p>
       </div>
       <div class="header-col">
         <h4>Key Numbers</h4>
         <div class="stat">4.5<span style="font-size:1rem;color:var(--muted);"> Cr</span></div>
-        <div class="stat-label">Bin-wash system value</div>
-        <br>
+        <div class="stat-label">Bin-wash system value</div><br>
         <div class="stat">AIR 1</div>
-        <div class="stat-label">SAE e-BAJA Sales Presentation</div>
-        <br>
+        <div class="stat-label">SAE e-BAJA Sales Presentation</div><br>
         <div class="stat">300<span style="font-size:1rem;color:var(--muted);">N</span></div>
         <div class="stat-label">Rocket nozzle design thrust</div>
       </div>
       <div class="header-col">
         <h4>Contact</h4>
         <div class="contact-links">
-          <a href="/cdn-cgi/l/email-protection#ddbcb3b4aeb5efeaecede49dbab0bcb4b1f3beb2b0">✉ <span class="__cf_email__" data-cfemail="fd9c93948e95cfcacccdc4bd9a909c9491d39e9290">[email&#160;protected]</span></a>
-          <a href="tel:+917499634319">✆ +91 74996 34319</a>
-          <a href="https://github.com/anishdhar9" target="_blank">⌥ github.com/anishdhar9</a>
-          <a href="https://www.linkedin.com/in/anishdhar9" target="_blank">⊞ linkedin.com/in/anishdhar9</a>
+          <a href="mailto:anish27109@gmail.com">&#9993; anish27109@gmail.com</a>
+          <a href="tel:+917499634319">&#9990; +91 74996 34319</a>
+          <a href="https://github.com/anishdhar9" target="_blank">&#9685; github.com/anishdhar9</a>
+          <a href="https://www.linkedin.com/in/anishdhar9" target="_blank">&#9635; linkedin.com/in/anishdhar9</a>
           <br>
-          <a href="Anish_Dhar_Resume.pdf" download style="color:var(--amber);">↓ Download Resume (PDF)</a>
+          <a href="Anish_Dhar_Resume.pdf" download style="color:var(--amber);">&#8595; Download Resume (PDF)</a>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ═══════════════════════════════ PROJECTS ═══════════════════════════════ -->
+<!-- PROJECTS -->
 <section class="section" id="projects">
   <div class="container">
     <div class="section-label">Engineering Work</div>
     <div class="section-title">PROJECTS</div>
-
     <div class="projects-grid">
 
-      <!-- 01 — Bin Washing System (FEATURED) -->
-      <div class="project-card featured reveal">
+      <!-- 01 FEATURED -->
+      <div class="project-card featured">
         <div class="card-image">
           <img src="img/bin-wash.jpg" alt="Inside the SS316 total-containment bin-washing chamber">
         </div>
         <div class="card-body">
-          <div class="card-index">PROJECT 01 · FEATURED</div>
-          <span class="card-tag">Containment Design</span>
-          <span class="card-tag">SS316</span>
-          <span class="card-tag">Pharma</span>
+          <div class="card-index">PROJECT 01 &middot; FEATURED</div>
+          <span class="card-tag">Containment Design</span><span class="card-tag">SS316</span><span class="card-tag">Pharma</span>
           <div class="card-title">Total-Containment Bin Washing System</div>
-          <p class="card-desc">
-            Sole design ownership of a high-value total-containment bin-washing system for potent API (Active Pharmaceutical Ingredient) bins at Glatt Systems. Delivered the complete design package — from concept through detailed drawings — coordinating with procurement, vendors, and the wider project team to reach manufacturing release. The system handles potent API containment, making leak-path elimination and cleanability the primary design constraints. Schematic shown due to IP restrictions.
-          </p>
+          <p class="card-desc">Sole design ownership of a high-value total-containment bin-washing system for potent API bins at Glatt Systems. Delivered the complete design package from concept through detailed drawings, coordinating with procurement, vendors, and the wider project team to reach manufacturing release. Potent API containment makes leak-path elimination and cleanability the primary design constraints. Schematic shown due to IP restrictions.</p>
           <div class="gist-block">
             <div class="gist-label">Specification Gist</div>
             <div class="gist-line"><span class="key">Value</span><span class="val">INR 4.5 Cr total-containment system</span></div>
             <div class="gist-line"><span class="key">Material</span><span class="val">SS316 structural + contact surfaces</span></div>
-            <div class="gist-line"><span class="key">Scope</span><span class="val">Concept → drawing release; procurement coordination</span></div>
+            <div class="gist-line"><span class="key">Scope</span><span class="val">Concept to drawing release; procurement coordination</span></div>
             <div class="gist-line"><span class="key">Constraint</span><span class="val">Potent API containment; full wash-cycle validation</span></div>
-            <div class="gist-line"><span class="key">Tools</span><span class="val">Autodesk Inventor, Vault PDM, GD&T (ASME Y14.5)</span></div>
+            <div class="gist-line"><span class="key">Tools</span><span class="val">Autodesk Inventor, Vault PDM, GD&amp;T (ASME Y14.5)</span></div>
           </div>
         </div>
       </div>
 
-      <!-- 02 — SS316 Ducting -->
-      <div class="project-card reveal">
+      <!-- 02 -->
+      <div class="project-card">
         <div class="card-image">
           <img src="img/ducting.jpg" alt="SS316 flanged duct assembly being fitted on shop floor">
         </div>
         <div class="card-body">
           <div class="card-index">PROJECT 02</div>
-          <span class="card-tag">Pressure Systems</span>
-          <span class="card-tag">Novel Joint Design</span>
+          <span class="card-tag">Pressure Systems</span><span class="card-tag">Novel Joint Design</span>
           <div class="card-title">SS316 Process Air Ducting System</div>
-          <p class="card-desc">
-            Designed a novel SS316 ducting joining system for pharmaceutical process air supply at Glatt Systems. The design targets elimination of legacy flanged-joint assembly — reducing leak paths and assembly time. Prototype was qualification-tested at 2 bar in a single-connection test.
-          </p>
+          <p class="card-desc">Designed a novel SS316 ducting joining system for pharmaceutical process air supply at Glatt Systems. The design targets elimination of legacy flanged-joint assembly, reducing leak paths and assembly time. Prototype was qualification-tested at 2 bar in a single-connection test.</p>
           <div class="gist-block">
             <div class="gist-label">Specification Gist</div>
             <div class="gist-line"><span class="key">Test pressure</span><span class="val">2 bar (single-connection qualification)</span></div>
-            <div class="gist-line"><span class="key">Material</span><span class="val">SS316 (pharma-grade)</span></div>
+            <div class="gist-line"><span class="key">Material</span><span class="val">SS316 pharma-grade</span></div>
             <div class="gist-line"><span class="key">Innovation</span><span class="val">Flanged-joint elimination; novel joining geometry</span></div>
             <div class="gist-line"><span class="key">Application</span><span class="val">Pharmaceutical process air supply ducting</span></div>
           </div>
         </div>
       </div>
 
-      <!-- 03 — Vertical Granulation Line -->
-      <div class="project-card reveal">
+      <!-- 03 -->
+      <div class="project-card">
         <div class="card-image">
-          <img src="img/granulation.jpg" alt="Looking down 3-story steel vertical granulation structure">
+          <img src="img/granulation.jpg" alt="3-story steel vertical granulation structure">
         </div>
         <div class="card-body">
           <div class="card-index">PROJECT 03</div>
-          <span class="card-tag">Structural Design</span>
-          <span class="card-tag">Multi-story</span>
+          <span class="card-tag">Structural Design</span><span class="card-tag">Multi-story</span>
           <div class="card-title">3-Story Vertical Granulation Line</div>
-          <p class="card-desc">
-            Contributed structural design to a 3-story all-steel vertical granulation line for a global pharmaceutical OEM, built for pre-production validation. Part of a 4-member core team coordinating across mechanical, process, and controls sub-teams.
-          </p>
+          <p class="card-desc">Contributed structural design to a 3-story all-steel vertical granulation line for a global pharmaceutical OEM, built for pre-production validation. Part of a 4-member core team coordinating across mechanical, process, and controls sub-teams.</p>
           <div class="gist-block">
             <div class="gist-label">Specification Gist</div>
             <div class="gist-line"><span class="key">Structure</span><span class="val">3-story all-steel; multi-sub-team coordination</span></div>
             <div class="gist-line"><span class="key">Client</span><span class="val">Global pharmaceutical OEM</span></div>
             <div class="gist-line"><span class="key">Stage</span><span class="val">Pre-production validation build</span></div>
-            <div class="gist-line"><span class="key">Team size</span><span class="val">4-member core (mech + process + controls)</span></div>
+            <div class="gist-line"><span class="key">Team</span><span class="val">4-member core (mech + process + controls)</span></div>
           </div>
         </div>
       </div>
 
-      <!-- 04 — Motor Controller Cooling -->
-      <div class="project-card reveal">
+      <!-- 04 -->
+      <div class="project-card">
         <div class="card-image">
           <img src="img/cooling-enclosure.jpg" alt="FDM-printed jet-impingement manifold on e-BAJA car">
         </div>
         <div class="card-body">
-          <div class="card-index">PROJECT 04 · VJTI RACING</div>
-          <span class="card-tag">Thermal Design</span>
-          <span class="card-tag">Additive Mfg.</span>
-          <span class="card-tag">SAE e-BAJA</span>
+          <div class="card-index">PROJECT 04 &middot; VJTI RACING</div>
+          <span class="card-tag">Thermal Design</span><span class="card-tag">Additive Mfg.</span><span class="card-tag">SAE e-BAJA</span>
           <div class="card-title">AM Jet-Impingement Motor Controller Enclosure</div>
-          <p class="card-desc">
-            Engineered a jet-impingement cooling enclosure for the motor controller of VJTI Racing's e-BAJA entry using SLA and FDM additive manufacturing. Designed low-loss manifold geometry to minimise static pressure drop across the forced-air distribution network, reducing auxiliary battery load.
-          </p>
+          <p class="card-desc">Engineered a jet-impingement cooling enclosure for the motor controller of VJTI Racing's e-BAJA entry using SLA and FDM additive manufacturing. Designed low-loss manifold geometry to minimise static pressure drop across the forced-air distribution network, reducing auxiliary battery load.</p>
           <div class="gist-block">
             <div class="gist-label">Specification Gist</div>
             <div class="gist-line"><span class="key">Mass</span><span class="val">500 g enclosure (SLA/FDM)</span></div>
-            <div class="gist-line"><span class="key">Target ΔT</span><span class="val">−25°C vs. baseline air-cooled config</span></div>
-            <div class="gist-line"><span class="key">Cooling mode</span><span class="val">Jet impingement; low-loss manifold geometry</span></div>
-            <div class="gist-line"><span class="key">Result</span><span class="val">AIR 1 Sales Presentation · AIR 5 Overall, SAE e-BAJA 2024</span></div>
+            <div class="gist-line"><span class="key">Target dT</span><span class="val">-25 deg C vs. baseline air-cooled config</span></div>
+            <div class="gist-line"><span class="key">Cooling</span><span class="val">Jet impingement; low-loss manifold geometry</span></div>
+            <div class="gist-line"><span class="key">Result</span><span class="val">AIR 1 Sales Presentation, AIR 5 Overall SAE e-BAJA 2024</span></div>
           </div>
         </div>
       </div>
 
-      <!-- 05 — VJTI Racing ISIE IKR -->
-      <div class="project-card reveal">
+      <!-- 05 -->
+      <div class="project-card">
         <div class="card-image">
-          <img src="img/vjti-racing.jpg" alt="VJTI Racing E67 car in workshop, team working on EV systems">
+          <img src="img/vjti-racing.jpg" alt="VJTI Racing EV car being prepped">
         </div>
         <div class="card-body">
-          <div class="card-index">PROJECT 05 · VJTI RACING</div>
-          <span class="card-tag">EV Systems</span>
-          <span class="card-tag">HV/LV Design</span>
-          <span class="card-tag">ISIE IKR</span>
-          <div class="card-title">EV Powertrain & Electrical Systems — ISIE IKR 2023</div>
-          <p class="card-desc">
-            Led low- and high-voltage system design for VJTI Racing's ISIE IKR 2023 EV entry. Implemented a multi-layer startup interlock sequence for HV safety. Recognised with Best Accelerating Vehicle, Best Business Proposal, and AIR 5 EV category.
-          </p>
+          <div class="card-index">PROJECT 05 &middot; VJTI RACING</div>
+          <span class="card-tag">EV Systems</span><span class="card-tag">HV/LV Design</span><span class="card-tag">ISIE IKR</span>
+          <div class="card-title">EV Powertrain &amp; Electrical Systems &mdash; ISIE IKR 2023</div>
+          <p class="card-desc">Led low- and high-voltage system design for VJTI Racing's ISIE IKR 2023 EV entry. Implemented a multi-layer startup interlock sequence for HV safety. Recognised with Best Accelerating Vehicle, Best Business Proposal, and AIR 5 EV category.</p>
           <div class="gist-block">
             <div class="gist-label">Specification Gist</div>
             <div class="gist-line"><span class="key">Scope</span><span class="val">LV + HV system design lead</span></div>
             <div class="gist-line"><span class="key">Safety</span><span class="val">Multi-layer startup interlock sequence</span></div>
-            <div class="gist-line"><span class="key">Awards</span><span class="val">Best Accelerating Vehicle · Best Business Proposal · AIR 5 EV</span></div>
+            <div class="gist-line"><span class="key">Awards</span><span class="val">Best Accelerating Vehicle, Best Business Proposal, AIR 5 EV</span></div>
           </div>
         </div>
       </div>
 
-      <!-- 06 — Rocket Nozzle -->
-      <div class="project-card reveal">
+      <!-- 06 -->
+      <div class="project-card">
         <div class="card-image">
-          <img src="img/rocket-nozzle.jpg" alt="Hand-held SLA/FDM converging-diverging nozzle assembly">
+          <img src="img/rocket-nozzle.jpg" alt="SLA/FDM converging-diverging nozzle assembly">
         </div>
         <div class="card-body">
           <div class="card-index">PROJECT 06</div>
-          <span class="card-tag">Precision Machining</span>
-          <span class="card-tag">Propulsion</span>
-          <div class="card-title">IPA–Air Rocket Engine Nozzle</div>
-          <p class="card-desc">
-            Designed a converging-diverging nozzle for 300 N sea-level thrust using isopropyl alcohol–air propellant. CNC-machined in mild steel on a Jyoti VMC850, including fixturing design, toolpath programming in CAM, and post-test failure analysis.
-          </p>
+          <span class="card-tag">Precision Machining</span><span class="card-tag">Propulsion</span>
+          <div class="card-title">IPA&ndash;Air Rocket Engine Nozzle</div>
+          <p class="card-desc">Designed a converging-diverging nozzle for 300 N sea-level thrust using isopropyl alcohol-air propellant. CNC-machined in mild steel on a Jyoti VMC850, including fixturing design, toolpath programming in CAM, and post-test failure analysis.</p>
           <div class="gist-block">
             <div class="gist-label">Specification Gist</div>
-            <div class="gist-line"><span class="key">Design thrust</span><span class="val">300 N (sea-level)</span></div>
-            <div class="gist-line"><span class="key">Propellant</span><span class="val">Isopropyl alcohol – air</span></div>
-            <div class="gist-line"><span class="key">Nozzle geometry</span><span class="val">Converging-diverging (De Laval)</span></div>
-            <div class="gist-line"><span class="key">Machine</span><span class="val">Jyoti VMC850 — fixturing + toolpath programmed</span></div>
+            <div class="gist-line"><span class="key">Design thrust</span><span class="val">300 N sea-level</span></div>
+            <div class="gist-line"><span class="key">Propellant</span><span class="val">Isopropyl alcohol - air</span></div>
+            <div class="gist-line"><span class="key">Geometry</span><span class="val">Converging-diverging (De Laval)</span></div>
+            <div class="gist-line"><span class="key">Machine</span><span class="val">Jyoti VMC850; fixturing + toolpath programmed</span></div>
             <div class="gist-line"><span class="key">Post-test</span><span class="val">Failure analysis conducted</span></div>
           </div>
         </div>
       </div>
 
-      <!-- 07 — Saarloha EAF -->
-      <div class="project-card reveal">
+      <!-- 07 -->
+      <div class="project-card">
         <div class="card-image">
-          <img src="img/eaf-cooling.jpg" alt="Glowing steel billet in continuous casting line, Saarloha EAF">
+          <img src="img/eaf-cooling.jpg" alt="Glowing steel billet in continuous casting line">
         </div>
         <div class="card-body">
-          <div class="card-index">PROJECT 07 · INTERNSHIP</div>
-          <span class="card-tag">Thermal Audit</span>
-          <span class="card-tag">Heavy Industry</span>
-          <span class="card-tag">EAF</span>
-          <div class="card-title">35T Electric Arc Furnace — Cooling Circuit Audit</div>
-          <p class="card-desc">
-            Audited the water-cooling circuit of a 35T Electric Arc Furnace and continuous casting line at Saarloha Advanced Materials. Quantified thermal losses from slag deposition on cooling panels via analysis of 30+ research papers and plant instrumentation data. Produced a structured improvement report with design modification recommendations to reduce parasitic heat losses in the EAF water-cooling loop.
-          </p>
+          <div class="card-index">PROJECT 07 &middot; INTERNSHIP</div>
+          <span class="card-tag">Thermal Audit</span><span class="card-tag">Heavy Industry</span><span class="card-tag">EAF</span>
+          <div class="card-title">35T Electric Arc Furnace &mdash; Cooling Circuit Audit</div>
+          <p class="card-desc">Audited the water-cooling circuit of a 35T Electric Arc Furnace and continuous casting line at Saarloha Advanced Materials. Quantified thermal losses from slag deposition on cooling panels via analysis of 30+ research papers and plant instrumentation data. Produced a structured improvement report with design modification recommendations.</p>
           <div class="gist-block">
             <div class="gist-label">Specification Gist</div>
             <div class="gist-line"><span class="key">Equipment</span><span class="val">35T EAF + continuous casting line</span></div>
@@ -867,20 +333,19 @@
         </div>
       </div>
 
-    </div><!-- /projects-grid -->
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ EXPERIENCE ═══════════════════════════════ -->
+<!-- EXPERIENCE -->
 <section class="section" id="experience">
   <div class="container">
     <div class="section-label">Work History</div>
     <div class="section-title">EXPERIENCE</div>
-
-    <div class="experience-item reveal">
+    <div class="experience-item">
       <div class="exp-meta">
         <div class="exp-company">Glatt Systems</div>
-        <div class="exp-period">Jun 2025 — Present · Pune, IN</div>
+        <div class="exp-period">Jun 2025 &mdash; Present &middot; Pune, IN</div>
       </div>
       <div>
         <div class="exp-role">Engineering Trainee</div>
@@ -889,112 +354,104 @@
           <li>Designed novel SS316 ducting joining system for pharmaceutical process air supply; prototype qualification-tested at 2 bar; design targets elimination of legacy flanged-joint assembly.</li>
           <li>Contributed structural design to a 3-story all-steel vertical granulation line for pre-production validation for a global pharmaceutical OEM; 4-member core team across mech, process, and controls.</li>
           <li>Managed ECNs across active design packages; tracked part-level changes through Vault PDM with revision-controlled drawing releases to vendors and manufacturing.</li>
-          <li>Direct manufacturing floor exposure across fabrication, assembly, and inspection; shop-floor feedback incorporated into design revisions; GD&T standards maintained across 100+ part assemblies.</li>
+          <li>Direct manufacturing floor exposure across fabrication, assembly, and inspection; maintained GD&amp;T standards across 100+ part assemblies.</li>
         </ul>
       </div>
     </div>
-
-    <div class="experience-item reveal">
+    <div class="experience-item">
       <div class="exp-meta">
         <div class="exp-company">Saarloha Advanced Materials</div>
-        <div class="exp-period">Jun 2024 — Aug 2024 · Pune, IN</div>
+        <div class="exp-period">Jun 2024 &mdash; Aug 2024 &middot; Pune, IN</div>
       </div>
       <div>
-        <div class="exp-role">Engineering Intern — Thermals</div>
+        <div class="exp-role">Engineering Intern &mdash; Thermals</div>
         <ul class="exp-points">
-          <li>Audited water-cooling circuit of a 35T Electric Arc Furnace and continuous casting line; quantified thermal losses from slag deposition on cooling panels via 30+ research papers and plant data.</li>
+          <li>Audited water-cooling circuit of a 35T Electric Arc Furnace and continuous casting line; quantified thermal losses from slag deposition via 30+ research papers and plant data.</li>
           <li>Produced structured improvement report with recommended design modifications to reduce parasitic heat losses in the EAF water-cooling loop.</li>
         </ul>
       </div>
     </div>
-
-    <div class="experience-item reveal">
+    <div class="experience-item">
       <div class="exp-meta">
         <div class="exp-company">VJTI Racing</div>
-        <div class="exp-period">Jun 2022 — Mar 2024 · Mumbai, IN</div>
+        <div class="exp-period">Jun 2022 &mdash; Mar 2024 &middot; Mumbai, IN</div>
       </div>
       <div>
-        <div class="exp-role">Thermal Systems Lead — SAE e-BAJA & ATVC</div>
+        <div class="exp-role">Thermal Systems Lead</div>
         <ul class="exp-points">
-          <li>Engineered jet-impingement cooling enclosure for motor controller (SLA/FDM AM); 500 g mass; target −25°C vs. baseline air-cooled config.</li>
+          <li>Engineered jet-impingement cooling enclosure for motor controller (SLA/FDM AM); 500 g mass; target -25 deg C vs. baseline air-cooled config.</li>
           <li>Designed low-loss manifold geometry minimising static pressure drop across forced-air distribution network, reducing auxiliary battery load.</li>
-          <li>AIR 1 Sales Presentation · AIR 5 Overall at SAE e-BAJA 2024.</li>
-          <li>Led LV + HV system design for ISIE IKR 2023; multi-layer startup interlock sequence — Best Accelerating Vehicle · Best Business Proposal · AIR 5 EV.</li>
+          <li>AIR 1 Sales Presentation, AIR 5 Overall at SAE e-BAJA 2024.</li>
+          <li>Led LV + HV system design for ISIE IKR 2023; multi-layer startup interlock &mdash; Best Accelerating Vehicle, Best Business Proposal, AIR 5 EV.</li>
         </ul>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════ SKILLS ═══════════════════════════════ -->
+<!-- SKILLS -->
 <section class="section" id="skills">
   <div class="container">
     <div class="section-label">Technical Competencies</div>
     <div class="section-title">SKILLS</div>
-
-    <div class="skills-grid reveal">
+    <div class="skills-grid">
       <div class="skill-group">
         <h4>CAD / PDM</h4>
         <div class="skill-item"><span class="skill-name">Autodesk Inventor</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
         <div class="skill-item"><span class="skill-name">Vault PDM</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
         <div class="skill-item"><span class="skill-name">Fusion 360</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
         <div class="skill-item"><span class="skill-name">SolidWorks</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:50%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">GD&T (ASME Y14.5)</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">GD&amp;T ASME Y14.5</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
       </div>
       <div class="skill-group">
         <h4>Simulation / CAE</h4>
         <div class="skill-item"><span class="skill-name">ANSYS Structural</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
         <div class="skill-item"><span class="skill-name">ANSYS Thermal</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">ANSYS Fluent (CFD)</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">ANSYS Fluent CFD</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
         <div class="skill-item"><span class="skill-name">Mesh Convergence</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
         <div class="skill-item"><span class="skill-name">MATLAB / Simulink</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
       </div>
       <div class="skill-group">
         <h4>Manufacturing</h4>
-        <div class="skill-item"><span class="skill-name">CNC (VMC850)</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">CNC VMC850</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
         <div class="skill-item"><span class="skill-name">FDM / SLA AM</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
         <div class="skill-item"><span class="skill-name">SS316 Fabrication</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">ECN / Change Mgmt.</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">ECN / Change Mgmt</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
         <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════ EDUCATION ═══════════════════════════════ -->
+<!-- EDUCATION -->
 <section class="section" id="education">
   <div class="container">
     <div class="section-label">Academic Background</div>
     <div class="section-title">EDUCATION</div>
-
-    <div class="edu-row reveal">
+    <div class="edu-row">
       <div class="edu-inst">VJTI Mumbai</div>
-      <div class="edu-degree">B.Tech — Mechanical Engineering · Dec 2021 – May 2025</div>
+      <div class="edu-degree">B.Tech &mdash; Mechanical Engineering &middot; Dec 2021 &ndash; May 2025</div>
       <div class="edu-score">7.67</div>
     </div>
-    <div class="edu-row reveal">
+    <div class="edu-row">
       <div class="edu-inst">City International School</div>
-      <div class="edu-degree">HSC — CBSE · Jul 2021</div>
+      <div class="edu-degree">HSC &mdash; CBSE &middot; Jul 2021</div>
       <div class="edu-score">88.2%</div>
     </div>
-    <div class="edu-row reveal">
+    <div class="edu-row">
       <div class="edu-inst">The Bishop's School</div>
-      <div class="edu-degree">SSC — ICSE · May 2019</div>
+      <div class="edu-degree">SSC &mdash; ICSE &middot; May 2019</div>
       <div class="edu-score">96.2%</div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
 <footer>
   <div class="container">
     <div class="footer-name">ANISH DHAR</div>
-    <div class="footer-sub">Mechanical Engineer · Pune, India · Available for opportunities</div>
+    <div class="footer-sub">Mechanical Engineer &middot; Pune, India &middot; Available for opportunities</div>
     <div class="footer-links">
-      <a href="/cdn-cgi/l/email-protection#7e1f10170d164c494f4e473e19131f1712501d1113">Email</a>
+      <a href="mailto:anish27109@gmail.com">Email</a>
       <a href="https://github.com/anishdhar9" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/anishdhar9" target="_blank">LinkedIn</a>
       <a href="tel:+917499634319">+91 74996 34319</a>
@@ -1002,10 +459,5 @@
   </div>
 </footer>
 
-<!-- ═══════════════════════════════ SCROLL REVEAL JS ═══════════════════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-  
+</body>
+</html>
