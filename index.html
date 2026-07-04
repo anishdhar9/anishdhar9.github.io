@@ -4,494 +4,773 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anish Dhar — Mechanical Engineer</title>
+<meta name="description" content="Mechanical engineer with hands-on ownership of pharma capital equipment, competitive motorsport CAE, and precision machining.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d0d0b; --bg2: #131310; --bg3: #1a1a16;
-    --rule: #2a2a24; --amber: #e8a020; --amber-dim: #7a5210;
-    --cream: #f0ead8; --muted: #7a7a6a;
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-body: 'Libre Baskerville', serif;
-    --font-mono: 'DM Mono', monospace;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--cream); font-family: var(--font-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+/* ─── TOKENS ──────────────────────────────────────────────────────── */
+:root {
+  --bg:       #080A10;
+  --bg-2:     #0D0F18;
+  --bg-3:     #141722;
+  --bg-4:     #1A1D2A;
+  --rule:     #1C2030;
+  --rule-2:   #242838;
+  --accent:   #E09420;
+  --accent-2: #F5B240;
+  --accent-dim:#5A3C0A;
+  --text:     #EDE8D8;
+  --muted:    #606880;
+  --muted-2:  #8890A8;
+  --blue:     #3B5BDB;
+  --blue-dim: #1E2D6B;
 
-  body::before {
-    content: ''; position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.035; pointer-events: none; z-index: 9999;
-  }
-  body::after {
-    content: ''; position: fixed; inset: 0;
-    background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px);
-    background-size: 60px 60px; opacity: 0.18; pointer-events: none; z-index: 0;
-  }
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
 
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+  --radius: 4px;
+  --radius-lg: 10px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
 
-  /* STICKY NAV */
-  .sticky-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    background: rgba(13,13,11,0.96);
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--rule);
-    transform: translateY(-100%);
-    transition: transform 0.3s ease;
-  }
-  .sticky-nav.visible { transform: translateY(0); }
-  .sticky-nav-inner {
-    max-width: 1200px; margin: 0 auto; padding: 0.7rem 2rem;
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  }
-  .sticky-nav-name { font-family: var(--font-display); font-size: 1.3rem; color: var(--amber); letter-spacing: 0.05em; white-space: nowrap; }
-  .sticky-nav-links { display: flex; gap: 1.5rem; align-items: center; }
-  .sticky-nav-links a {
-    font-family: var(--font-mono); font-size: 0.63rem; color: var(--muted);
-    text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s;
-  }
-  .sticky-nav-links a:hover, .sticky-nav-links a.active { color: var(--amber); }
+/* ─── RESET ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
 
-  /* HAMBURGER */
-  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; flex-shrink: 0; }
-  .hamburger span { display: block; width: 22px; height: 2px; background: var(--cream); transition: transform 0.25s, opacity 0.25s; }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* ─── NOISE OVERLAY ───────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.028;
+}
 
-  /* MOBILE MENU */
-  .mobile-menu { display: none; flex-direction: column; border-top: 1px solid var(--rule); background: rgba(13,13,11,0.98); }
-  .mobile-menu a {
-    font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);
-    text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 0.8rem 2rem; border-bottom: 1px solid var(--rule); transition: color 0.2s, background 0.2s;
-  }
-  .mobile-menu a:hover { color: var(--amber); background: var(--bg2); }
-  .mobile-menu.open { display: flex; }
+/* ─── LAYOUT ──────────────────────────────────────────────────────── */
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
 
-  /* HEADER */
-  header {
-    position: relative; z-index: 1; padding: 3rem 0 0;
-    border-bottom: 1px solid var(--rule);
-    background-image: url('images/hero.jpg');
-    background-size: cover; background-position: center 40%;
-  }
-  header::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(13,13,11,0.85) 0%, rgba(13,13,11,0.95) 100%);
-    z-index: 0;
-  }
-  .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
-  .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
-  .issue-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid var(--amber-dim); padding: 0.25rem 0.6rem; display: inline-block; }
-  .nav-links { display: flex; gap: 2rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-  .nav-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--amber); }
-  .headline-block { border-top: 3px solid var(--amber); padding-top: 1.5rem; }
-  h1 { font-family: var(--font-display); font-size: clamp(5rem, 12vw, 10rem); line-height: 0.9; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 0.2rem; }
-  .name-sub { font-family: var(--font-mono); font-size: 0.75rem; color: var(--amber); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; }
-  .header-columns { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--rule); }
-  .header-col h4 { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--rule); }
-  .header-col p { font-size: 0.85rem; color: var(--cream); line-height: 1.5; }
-  .header-col .stat { font-family: var(--font-display); font-size: 2.2rem; color: var(--amber); line-height: 1; margin-bottom: 0.1rem; }
-  .header-col .stat-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
-  .contact-links { display: flex; flex-direction: column; gap: 0.3rem; }
-  .contact-links a { font-family: var(--font-mono); font-size: 0.72rem; color: var(--cream); text-decoration: none; transition: color 0.2s; }
-  .contact-links a:hover { color: var(--amber); }
+/* ─── NAV ─────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  transition: transform 0.35s var(--ease), background 0.3s;
+  transform: translateY(-100%);
+}
+.nav.show { transform: translateY(0); }
+.nav-inner {
+  max-width: 1160px; margin: 0 auto; padding: 0.8rem 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  background: rgba(8,10,16,0.88);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo {
+  font-family: var(--font-display); font-size: 1.25rem; letter-spacing: 0.06em;
+  color: var(--accent); white-space: nowrap;
+}
+.nav-links { display: flex; gap: 0.25rem; align-items: center; }
+.nav-links a {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); padding: 0.4rem 0.75rem;
+  border-radius: var(--radius); transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent); background: rgba(224,148,32,0.08); }
+.nav-cta {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent);
+  border: 1px solid var(--accent-dim); padding: 0.4rem 0.9rem;
+  border-radius: var(--radius); transition: background 0.2s, border-color 0.2s;
+}
+.nav-cta:hover { background: var(--accent-dim); border-color: var(--accent); }
 
-  /* SECTIONS */
-  .section { position: relative; z-index: 1; padding: 4rem 0; border-bottom: 1px solid var(--rule); }
-  .section-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--amber); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
-  .section-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; color: var(--cream); margin-bottom: 3rem; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
+/* HAMBURGER */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.hamburger span { display: block; width: 20px; height: 2px; background: var(--text); transition: transform 0.25s, opacity 0.25s; border-radius: 1px; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none; flex-direction: column; background: rgba(8,10,16,0.97);
+  border-bottom: 1px solid var(--rule); max-height: 0; overflow: hidden;
+  transition: max-height 0.35s var(--ease);
+}
+.mobile-menu.open { max-height: 400px; display: flex; }
+.mobile-menu a {
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);
+  letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 2rem;
+  border-bottom: 1px solid var(--rule); transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--accent); }
 
-  /* PROJECT CARDS */
-  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rule); }
-  .project-card { border: 1px solid var(--rule); background: var(--bg2); display: flex; flex-direction: column; transition: background 0.25s; overflow: hidden; }
-  .project-card:hover { background: var(--bg3); }
-  .project-card.featured { grid-column: span 2; flex-direction: row; }
-  .project-card.span-2 { grid-column: span 2; }
-  .card-image { width: 100%; aspect-ratio: 16/9; background: var(--bg3); overflow: hidden; border-bottom: 1px solid var(--rule); flex-shrink: 0; position: relative; }
-  .project-card.featured .card-image { width: 45%; aspect-ratio: unset; border-bottom: none; border-right: 1px solid var(--rule); }
-  .card-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.3s, transform 0.4s; display: block; cursor: zoom-in; }
-  .project-card:hover .card-image img { opacity: 1; transform: scale(1.02); }
-  .card-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
-  .card-index { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.15em; margin-bottom: 0.5rem; }
-  .card-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.58rem; color: var(--amber); border: 1px solid var(--amber-dim); padding: 0.15rem 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; margin-right: 0.4rem; }
-  .card-title { font-family: var(--font-display); font-size: 1.7rem; line-height: 1.05; color: var(--cream); margin-bottom: 0.75rem; }
-  .card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
+/* ─── LIGHTBOX ────────────────────────────────────────────────────── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(0,0,0,0.93);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.25s;
+}
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox-img { max-width: 90vw; max-height: 88vh; object-fit: contain; }
+.lb-close {
+  position: absolute; top: 1.25rem; right: 1.5rem;
+  background: none; border: none; color: var(--text); font-size: 2rem;
+  line-height: 1; cursor: pointer; opacity: 0.55; transition: opacity 0.2s;
+}
+.lb-close:hover { opacity: 1; }
+.lb-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text); font-size: 1.6rem; width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.2s;
+}
+.lb-arrow:hover { background: rgba(224,148,32,0.22); }
+.lb-prev { left: 1.5rem; }
+.lb-next { right: 1.5rem; }
+.lb-counter {
+  position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em;
+}
 
-  /* GIST */
-  .gist-block { background: #0a0a08; border: 1px solid var(--rule); border-left: 2px solid var(--amber); padding: 0.85rem 1rem; margin-top: auto; }
-  .gist-label { font-family: var(--font-mono); font-size: 0.58rem; color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
-  .gist-line { font-family: var(--font-mono); font-size: 0.72rem; color: #9a9a8a; line-height: 1.6; display: flex; gap: 0.75rem; }
-  .gist-line .key { color: var(--amber); min-width: 100px; flex-shrink: 0; }
-  .gist-line .val { color: var(--cream); }
+/* ─── HERO ────────────────────────────────────────────────────────── */
+.hero {
+  position: relative; min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding-bottom: 5rem; overflow: hidden;
+  background: var(--bg);
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('images/hero.jpg');
+  background-size: cover; background-position: center 35%;
+  opacity: 0.22;
+}
+.hero-gradient {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(224,148,32,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(59,91,219,0.07) 0%, transparent 55%),
+    linear-gradient(to bottom, rgba(8,10,16,0.4) 0%, rgba(8,10,16,0.65) 50%, rgba(8,10,16,0.97) 100%);
+  animation: heroGlow 12s ease-in-out infinite alternate;
+}
+@keyframes heroGlow {
+  0%   { background-position: 70% 40%, 20% 80%, center; }
+  100% { background-position: 65% 45%, 25% 75%, center; }
+}
 
-  /* GALLERY CONTROLS */
-  .gallery-btn {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(13,13,11,0.75); border: 1px solid rgba(240,234,216,0.15);
-    color: var(--cream); font-size: 1.4rem; line-height: 1;
-    width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; z-index: 3; opacity: 0; transition: opacity 0.2s, background 0.2s;
-  }
-  .card-image:hover .gallery-btn { opacity: 1; }
-  .gallery-btn:hover { background: rgba(232,160,32,0.3); }
-  .gallery-btn.prev { left: 8px; }
-  .gallery-btn.next { right: 8px; }
-  .gallery-dots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 3; }
-  .gallery-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: rgba(240,234,216,0.35); cursor: pointer;
-    transition: background 0.2s; border: none; padding: 0;
-  }
-  .gallery-dot.active { background: var(--amber); }
+/* Blueprint grid on hero */
+.hero::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(59,91,219,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,91,219,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 30%, transparent 100%);
+}
 
-  /* LIGHTBOX */
-  .lightbox {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.93);
-    z-index: 10000; display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.25s;
-  }
-  .lightbox.open { opacity: 1; pointer-events: all; }
-  .lightbox-img-wrap { display: flex; align-items: center; justify-content: center; }
-  .lightbox-img-wrap img { max-width: 90vw; max-height: 88vh; object-fit: contain; display: block; }
-  .lb-close {
-    position: absolute; top: 1.25rem; right: 1.5rem;
-    background: none; border: none; color: var(--cream);
-    font-size: 2.2rem; line-height: 1; cursor: pointer; opacity: 0.6; transition: opacity 0.2s;
-  }
-  .lb-close:hover { opacity: 1; }
-  .lb-arrow {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-    color: var(--cream); font-size: 1.8rem; width: 50px; height: 50px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: background 0.2s;
-  }
-  .lb-arrow:hover { background: rgba(232,160,32,0.25); }
-  .lb-arrow.prev { left: 1.5rem; }
-  .lb-arrow.next { right: 1.5rem; }
-  .lb-counter {
-    position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
-    font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em;
-  }
+.hero-content { position: relative; z-index: 2; }
 
-  /* SKILLS */
-  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-  .skill-group { background: var(--bg2); padding: 1.5rem; }
-  .skill-group h4 { font-family: var(--font-mono); font-size: 0.6rem; color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
-  .skill-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
-  .skill-name { font-family: var(--font-mono); font-size: 0.72rem; color: var(--cream); min-width: 120px; }
-  .skill-bar-track { flex: 1; height: 2px; background: var(--rule); position: relative; }
-  .skill-bar-fill { height: 100%; background: var(--amber); position: relative; }
-  .skill-bar-fill::after { content: ''; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; background: var(--amber); transform: rotate(45deg); }
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;
+}
+.eyebrow-tag {
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+  border: 1px solid var(--accent-dim); padding: 0.3rem 0.75rem;
+  border-radius: var(--radius);
+}
+.eyebrow-line { flex: 1; max-width: 80px; height: 1px; background: var(--accent-dim); }
 
-  /* EXPERIENCE */
-  .experience-item { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--rule); }
-  .exp-company { font-family: var(--font-display); font-size: 1.3rem; color: var(--amber); line-height: 1.1; margin-bottom: 0.3rem; }
-  .exp-period { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
-  .exp-role { font-family: var(--font-display); font-size: 1.6rem; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.05; }
-  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-  .exp-points li { font-size: 0.82rem; color: var(--muted); padding-left: 1rem; position: relative; line-height: 1.6; }
-  .exp-points li::before { content: '—'; position: absolute; left: 0; color: var(--amber); }
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(5.5rem, 14vw, 12rem);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+}
+.hero-name span { color: var(--accent); }
 
-  /* EDUCATION */
-  .edu-row { display: flex; justify-content: space-between; align-items: baseline; padding: 1.2rem 0; border-bottom: 1px solid var(--rule); gap: 1rem; }
-  .edu-inst { font-family: var(--font-display); font-size: 1.4rem; color: var(--cream); }
-  .edu-degree { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; flex: 1; padding: 0 2rem; }
-  .edu-score { font-family: var(--font-display); font-size: 1.8rem; color: var(--amber); }
+.hero-role {
+  font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted-2); margin-bottom: 2.5rem;
+}
 
-  /* CFD */
-  .cfd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-  .cfd-card { background: var(--bg2); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
-  .cfd-header { display: flex; justify-content: space-between; align-items: center; }
-  .cfd-index { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.15em; }
-  .cfd-github-link { font-family: var(--font-mono); font-size: 0.65rem; color: var(--amber); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; border: 1px solid var(--amber-dim); padding: 0.2rem 0.6rem; transition: background 0.2s; }
-  .cfd-github-link:hover { background: var(--amber-dim); }
-  .cfd-title { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.05; color: var(--cream); }
-  .cfd-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-  .cfd-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
-  .cfd-spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-  .cfd-spec { border-left: 2px solid var(--amber-dim); padding-left: 0.75rem; }
-  .cfd-spec-label { font-family: var(--font-mono); font-size: 0.58rem; color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
-  .cfd-spec-val { font-family: var(--font-mono); font-size: 0.7rem; color: var(--cream); line-height: 1.4; }
-  .cfd-code-snippet { background: #070706; border: 1px solid var(--rule); border-left: 2px solid var(--amber); overflow-x: auto; }
-  .cfd-code-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--amber); letter-spacing: 0.1em; padding: 0.5rem 0.85rem 0; }
-  .cfd-code-snippet pre { margin: 0; padding: 0.75rem 0.85rem; }
-  .cfd-code-snippet code { font-family: var(--font-mono); font-size: 0.72rem; color: #9a9a8a; line-height: 1.7; white-space: pre; }
-  .tok-comment { color: #5a5a4a; }
-  .tok-kw { color: var(--amber); }
+.hero-bottom {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 3rem; align-items: flex-end;
+  border-top: 1px solid var(--rule); padding-top: 2rem;
+}
+.hero-stats { display: flex; gap: 3rem; }
+.hero-stat-val {
+  font-family: var(--font-display); font-size: 2.4rem; color: var(--accent); line-height: 1;
+}
+.hero-stat-label {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); margin-top: 0.2rem;
+}
+.hero-actions { display: flex; gap: 0.75rem; flex-shrink: 0; }
+.btn {
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.75rem 1.5rem;
+  border-radius: var(--radius); cursor: pointer; transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--accent); color: #08090E; border: 1px solid var(--accent); font-weight: 600;
+}
+.btn-primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+.btn-ghost {
+  background: transparent; color: var(--text);
+  border: 1px solid var(--rule-2);
+}
+.btn-ghost:hover { border-color: var(--muted); color: var(--accent); }
 
-  /* FOOTER */
-  footer { position: relative; z-index: 1; padding: 3rem 0; text-align: center; border-top: 3px solid var(--amber); }
-  .footer-name { font-family: var(--font-display); font-size: 3rem; color: var(--cream); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-  .footer-sub { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; }
-  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; }
-  .footer-links a { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--amber); }
+/* Scroll indicator */
+.hero-scroll {
+  position: absolute; bottom: 1.75rem; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--muted);
+  animation: scrollBob 2.5s ease-in-out infinite;
+}
+.hero-scroll svg { opacity: 0.45; }
+@keyframes scrollBob { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 
-  /* SCROLL REVEAL */
-  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-d1 { transition-delay: 80ms; }
-  .reveal-d2 { transition-delay: 160ms; }
+/* ─── SECTION BASE ────────────────────────────────────────────────── */
+.section { position: relative; z-index: 1; padding: 6rem 0; border-bottom: 1px solid var(--rule); }
+.section-head { margin-bottom: 3.5rem; }
+.section-label {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-label::before {
+  content: ''; display: block; width: 24px; height: 1px; background: var(--accent);
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+  line-height: 0.95; color: var(--text); letter-spacing: 0.01em;
+}
 
-  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  header { animation: fadeInUp 0.8s ease forwards; }
+/* Blueprint grid bg for sections */
+.section-blueprint {
+  background-image:
+    linear-gradient(rgba(59,91,219,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,91,219,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .sticky-nav { transform: translateY(0) !important; }
-    header { padding-top: calc(3rem + 52px); }
-    .hamburger { display: flex; }
-    .sticky-nav-links { display: none; }
-    .header-columns { grid-template-columns: 1fr 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .project-card.featured, .project-card.span-2 { grid-column: span 1; flex-direction: column; }
-    .project-card.featured .card-image { width: 100%; aspect-ratio: 16/9; border-right: none; border-bottom: 1px solid var(--rule); }
-    .skills-grid { grid-template-columns: 1fr; }
-    .experience-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .edu-row { flex-direction: column; gap: 0.3rem; }
-    .nav-links { display: none; }
-    .cfd-grid { grid-template-columns: 1fr; }
-    .cfd-spec-grid { grid-template-columns: 1fr; }
-    .lb-arrow { display: none; }
-  }
+/* ─── ABOUT ───────────────────────────────────────────────────────── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-bio { font-size: 1.05rem; color: var(--muted-2); line-height: 1.8; }
+.about-bio p + p { margin-top: 1rem; }
+.about-bio strong { color: var(--text); font-weight: 600; }
+
+.about-details { display: flex; flex-direction: column; gap: 1.5rem; }
+.about-contact { display: flex; flex-direction: column; gap: 0.5rem; }
+.contact-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted-2);
+  transition: color 0.2s;
+}
+.contact-item:hover { color: var(--accent); }
+.contact-icon { width: 14px; text-align: center; color: var(--accent); flex-shrink: 0; }
+
+.about-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+.chip {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em;
+  color: var(--muted-2); border: 1px solid var(--rule-2);
+  padding: 0.25rem 0.65rem; border-radius: 99px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.chip:hover { border-color: var(--accent-dim); color: var(--accent); }
+
+/* ─── PROJECTS ────────────────────────────────────────────────────── */
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.card { background: var(--bg-2); display: flex; flex-direction: column; transition: background 0.25s; overflow: hidden; }
+.card:hover { background: var(--bg-3); }
+.card.featured { grid-column: span 2; flex-direction: row; }
+.card.wide { grid-column: span 2; }
+
+.card-img {
+  position: relative; overflow: hidden; background: var(--bg-3);
+  flex-shrink: 0;
+}
+.card:not(.featured) .card-img { aspect-ratio: 16/9; }
+.card.featured .card-img { width: 44%; aspect-ratio: unset; min-height: 340px; }
+.card.wide .card-img { aspect-ratio: 21/9; }
+
+.card-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.82; transition: opacity 0.4s, transform 0.5s var(--ease);
+  cursor: zoom-in;
+}
+.card:hover .card-img img { opacity: 1; transform: scale(1.03); }
+
+/* gallery controls */
+.gal-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(8,10,16,0.7); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text); width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; cursor: pointer; z-index: 3;
+  opacity: 0; transition: opacity 0.2s, background 0.2s;
+}
+.card-img:hover .gal-btn { opacity: 1; }
+.gal-btn:hover { background: rgba(224,148,32,0.25); }
+.gal-btn.prev { left: 8px; }
+.gal-btn.next { right: 8px; }
+.gal-dots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 3; }
+.gal-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(237,232,216,0.35); border: none; cursor: pointer; transition: background 0.2s; padding: 0; }
+.gal-dot.active { background: var(--accent); }
+
+/* card body */
+.card-body { padding: 1.75rem; display: flex; flex-direction: column; flex: 1; }
+.card-index { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 0.5rem; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.9rem; }
+.tag {
+  font-family: var(--font-mono); font-size: 0.57rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent);
+  border: 1px solid var(--accent-dim); padding: 0.15rem 0.55rem;
+  border-radius: var(--radius);
+}
+.card-title {
+  font-family: var(--font-display); font-size: 1.75rem; line-height: 1.0;
+  color: var(--text); margin-bottom: 0.75rem; letter-spacing: 0.01em;
+}
+.card-desc { font-size: 0.83rem; color: var(--muted-2); line-height: 1.7; flex: 1; margin-bottom: 1.25rem; }
+
+/* spec block */
+.spec-block {
+  background: var(--bg); border: 1px solid var(--rule);
+  border-left: 2px solid var(--accent-dim); margin-top: auto;
+  padding: 0.85rem 1rem;
+}
+.spec-label {
+  font-family: var(--font-mono); font-size: 0.57rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+}
+.spec-row { display: flex; gap: 0.75rem; font-family: var(--font-mono); font-size: 0.7rem; line-height: 1.65; }
+.spec-key { color: var(--muted); min-width: 110px; flex-shrink: 0; }
+.spec-val { color: var(--text); }
+
+/* ─── RESUME SECTION ──────────────────────────────────────────────── */
+.resume-layout { display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start; }
+.resume-download-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: var(--bg-3); border: 1px solid var(--rule);
+  border-left: 2px solid var(--accent); margin-bottom: 2.5rem;
+}
+.resume-download-bar span {
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted-2);
+}
+
+/* Timeline */
+.timeline { position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 1px; background: var(--rule-2);
+}
+.tl-item { padding-left: 2rem; padding-bottom: 2.5rem; position: relative; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -5px; top: 4px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg-3); border: 2px solid var(--accent);
+}
+.tl-header { margin-bottom: 0.6rem; }
+.tl-company { font-family: var(--font-display); font-size: 1.4rem; color: var(--accent); line-height: 1.1; }
+.tl-role { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+.tl-period {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem;
+}
+.tl-points { display: flex; flex-direction: column; gap: 0.4rem; }
+.tl-points li {
+  font-size: 0.82rem; color: var(--muted-2); padding-left: 1rem; position: relative; line-height: 1.6;
+}
+.tl-points li::before { content: '—'; position: absolute; left: 0; color: var(--accent-dim); }
+
+/* Education in resume */
+.edu-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem; }
+.edu-item { padding: 1rem 1.25rem; background: var(--bg-3); border: 1px solid var(--rule); border-radius: var(--radius); }
+.edu-inst { font-family: var(--font-display); font-size: 1.25rem; color: var(--text); }
+.edu-degree { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; }
+.edu-score { font-family: var(--font-display); font-size: 1.6rem; color: var(--accent); margin-top: 0.25rem; }
+
+/* Skills in resume sidebar */
+.resume-skills { display: flex; flex-direction: column; gap: 2rem; }
+.rs-group-title {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem;
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule);
+}
+.rs-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.55rem; }
+.rs-name { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text); min-width: 130px; }
+.rs-bar { flex: 1; height: 2px; background: var(--rule-2); position: relative; }
+.rs-fill { height: 100%; background: linear-gradient(to right, var(--accent-dim), var(--accent)); position: relative; }
+.rs-fill::after { content: ''; position: absolute; right: -1px; top: -3px; width: 6px; height: 6px; background: var(--accent); transform: rotate(45deg); }
+
+/* ─── CFD SECTION ─────────────────────────────────────────────────── */
+.cfd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.cfd-card { background: var(--bg-2); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.cfd-header { display: flex; justify-content: space-between; align-items: center; }
+.cfd-index { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.15em; }
+.cfd-gh-link {
+  font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent);
+  border: 1px solid var(--accent-dim); padding: 0.25rem 0.6rem;
+  border-radius: var(--radius); display: flex; align-items: center; gap: 0.4rem;
+  transition: background 0.2s;
+}
+.cfd-gh-link:hover { background: var(--accent-dim); }
+.cfd-title { font-family: var(--font-display); font-size: 1.55rem; color: var(--text); line-height: 1.05; }
+.cfd-desc { font-size: 0.82rem; color: var(--muted-2); line-height: 1.7; }
+.cfd-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.cfd-spec { border-left: 2px solid var(--accent-dim); padding-left: 0.75rem; }
+.cfd-spec-label { font-family: var(--font-mono); font-size: 0.57rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+.cfd-spec-val { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text); line-height: 1.45; }
+.cfd-code { background: #06070B; border: 1px solid var(--rule); border-left: 2px solid var(--accent); overflow-x: auto; }
+.cfd-code-label { font-family: var(--font-mono); font-size: 0.58rem; color: var(--accent); letter-spacing: 0.1em; padding: 0.5rem 0.9rem 0; }
+.cfd-code pre { margin: 0; padding: 0.6rem 0.9rem 0.85rem; }
+.cfd-code code { font-family: var(--font-mono); font-size: 0.7rem; color: #8890A8; line-height: 1.75; white-space: pre; }
+.tok-cmt { color: #3D4460; }
+.tok-kw { color: var(--accent); }
+
+/* ─── FOOTER ──────────────────────────────────────────────────────── */
+footer { position: relative; z-index: 1; padding: 4rem 0 3rem; border-top: 2px solid var(--accent-dim); }
+.footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+.footer-name { font-family: var(--font-display); font-size: 2.75rem; color: var(--text); letter-spacing: 0.05em; }
+.footer-sub { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+.footer-links { display: flex; gap: 0.25rem; flex-wrap: wrap; justify-content: flex-end; }
+.footer-links a {
+  font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); padding: 0.45rem 0.75rem;
+  border-radius: var(--radius); transition: color 0.2s, background 0.2s;
+}
+.footer-links a:hover { color: var(--accent); background: rgba(224,148,32,0.08); }
+
+/* ─── SCROLL REVEAL ───────────────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 80ms; }
+.reveal-d2 { transition-delay: 160ms; }
+.reveal-d3 { transition-delay: 240ms; }
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .card.featured, .card.wide { grid-column: span 1; flex-direction: column; }
+  .card.featured .card-img { width: 100%; aspect-ratio: 16/9; min-height: unset; }
+  .card.wide .card-img { aspect-ratio: 16/9; }
+  .resume-layout { grid-template-columns: 1fr; }
+  .cfd-grid { grid-template-columns: 1fr; }
+  .cfd-specs { grid-template-columns: 1fr; }
+  .hero-bottom { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-links { justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 1.25rem; }
+  .section { padding: 4rem 0; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .hero-name { font-size: clamp(4rem, 18vw, 7rem); }
+  .lb-arrow { display: none; }
+}
+@media (min-width: 641px) {
+  .nav { display: block !important; }
+  .nav.show .nav-inner { display: flex; }
+}
 </style>
 </head>
 <body>
 
-<!-- STICKY NAV -->
-<div class="sticky-nav" id="sticky-nav">
-  <div class="sticky-nav-inner">
-    <span class="sticky-nav-name">ANISH DHAR</span>
-    <nav class="sticky-nav-links">
+<!-- ─── NAV ──────────────────────────────────────────────────────── -->
+<nav class="nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">ANISH DHAR</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
       <a href="#computational">CFD Code</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="mailto:anish27109@gmail.com">Contact</a>
-    </nav>
+    </div>
+    <a href="Anish_Dhar_Resume.pdf" download class="nav-cta btn">&#8595; Resume</a>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="mobile-menu" id="mobile-menu">
+    <a href="#about">About</a>
     <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
     <a href="#computational">CFD Code</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-    <a href="mailto:anish27109@gmail.com">Contact</a>
+    <a href="Anish_Dhar_Resume.pdf" download>&#8595; Download Resume</a>
   </div>
-</div>
+</nav>
 
-<!-- LIGHTBOX -->
+<!-- ─── LIGHTBOX ─────────────────────────────────────────────────── -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
   <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
-  <button class="lb-arrow prev" id="lb-prev" aria-label="Previous">&#8249;</button>
-  <div class="lightbox-img-wrap">
-    <img id="lb-img" src="" alt="Project image">
-  </div>
-  <button class="lb-arrow next" id="lb-next" aria-label="Next">&#8250;</button>
+  <button class="lb-arrow lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+  <img class="lightbox-img" id="lb-img" src="" alt="Project image">
+  <button class="lb-arrow lb-next" id="lb-next" aria-label="Next">&#8250;</button>
   <div class="lb-counter" id="lb-counter"></div>
 </div>
 
-<header>
-  <div class="header-inner">
-    <div class="header-top">
-      <div><div class="issue-tag">Portfolio &middot; 2026 Edition &middot; Mechanical Engineer</div></div>
-      <nav class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#computational">CFD Code</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="mailto:anish27109@gmail.com">Contact</a>
-      </nav>
+<!-- ─── HERO ─────────────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="wrap hero-content">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-tag">Portfolio · 2026</span>
+      <div class="eyebrow-line"></div>
     </div>
-    <div class="headline-block">
-      <h1>ANISH<br>DHAR</h1>
-      <p class="name-sub">Mechanical Engineer &middot; Pune, India</p>
+    <h1 class="hero-name">ANISH<br><span>DHAR</span></h1>
+    <p class="hero-role">Mechanical Engineer &middot; Pune, India &middot; Pharma &middot; Motorsport &middot; CFD</p>
+    <div class="hero-bottom">
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-val">4.5<span style="font-size:1rem;color:var(--muted)"> Cr</span></div>
+          <div class="hero-stat-label">Bin-wash system value</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">AIR 1</div>
+          <div class="hero-stat-label">SAE e-BAJA Sales Pres.</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">300<span style="font-size:1rem;color:var(--muted)">N</span></div>
+          <div class="hero-stat-label">Rocket nozzle thrust</div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="Anish_Dhar_Resume.pdf" download class="btn btn-primary">&#8595; Download Resume</a>
+        <a href="#projects" class="btn btn-ghost">View Projects &#8595;</a>
+      </div>
     </div>
-    <div class="header-columns">
-      <div class="header-col">
-        <h4>About</h4>
-        <p>Early-career mechanical engineer with hands-on ownership of pharma capital equipment, competitive motorsport CAE, and precision machining. Designed an INR 4.5 Cr total-containment bin-washing system through to manufacturing release. Proficient in Autodesk Inventor, ANSYS FEA/thermal, GD&amp;T, and additive manufacturing.</p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <svg width="16" height="22" viewBox="0 0 16 22" fill="none"><rect x="1" y="1" width="14" height="20" rx="7" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─────────────────────────────────────────────────────── -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-label">Introduction</div>
+      <h2 class="section-title">ABOUT</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-bio reveal">
+        <p>Early-career mechanical engineer with <strong>end-to-end design ownership</strong> of pharma capital equipment, competitive motorsport CAE, and precision CNC machining. Based in Pune, India.</p>
+        <p>At Glatt Systems, I held sole design responsibility for a <strong>₹4.5 Cr total-containment bin-washing system</strong> — from concept through detailed drawings and manufacturing release, coordinating procurement, vendors, and a cross-functional project team. Potent API containment made leak-path elimination and cleanability the primary constraints.</p>
+        <p>Alongside product work, I write <strong>from-scratch CFD solvers</strong> in Python — Euler equations, finite-difference schemes for the Sod shock tube, lid-driven cavity flow — benchmarked against analytical solutions. Engineering by instinct, verified by numbers.</p>
+        <div class="about-chips" style="margin-top:1.5rem;">
+          <span class="chip">Autodesk Inventor</span>
+          <span class="chip">ANSYS FEA/Thermal</span>
+          <span class="chip">GD&amp;T ASME Y14.5</span>
+          <span class="chip">Python CFD</span>
+          <span class="chip">SS316 Fabrication</span>
+          <span class="chip">FDM / SLA AM</span>
+          <span class="chip">CNC VMC850</span>
+          <span class="chip">Vault PDM</span>
+        </div>
       </div>
-      <div class="header-col">
-        <h4>Key Numbers</h4>
-        <div class="stat">4.5<span style="font-size:1rem;color:var(--muted);"> Cr</span></div>
-        <div class="stat-label">Bin-wash system value</div><br>
-        <div class="stat">AIR 1</div>
-        <div class="stat-label">SAE e-BAJA Sales Presentation</div><br>
-        <div class="stat">300<span style="font-size:1rem;color:var(--muted);">N</span></div>
-        <div class="stat-label">Rocket nozzle design thrust</div>
-      </div>
-      <div class="header-col">
-        <h4>Contact</h4>
-        <div class="contact-links">
-          <a href="mailto:anish27109@gmail.com">&#9993; anish27109@gmail.com</a>
-          <a href="tel:+917499634319">&#9990; +91 74996 34319</a>
-          <a href="https://github.com/anishdhar9" target="_blank">&#9685; github.com/anishdhar9</a>
-          <a href="https://www.linkedin.com/in/anishdhar9" target="_blank">&#9635; linkedin.com/in/anishdhar9</a>
-          <br>
-          <a href="Anish_Dhar_Resume.pdf" download style="color:var(--amber);">&#8595; Download Resume (PDF)</a>
+      <div class="about-details reveal reveal-d1">
+        <div>
+          <div class="section-label" style="margin-bottom:0.75rem;">Contact</div>
+          <div class="about-contact">
+            <a href="mailto:anish27109@gmail.com" class="contact-item">
+              <span class="contact-icon">✉</span> anish27109@gmail.com
+            </a>
+            <a href="tel:+917499634319" class="contact-item">
+              <span class="contact-icon">✆</span> +91 74996 34319
+            </a>
+            <a href="https://github.com/anishdhar9" target="_blank" rel="noopener" class="contact-item">
+              <span class="contact-icon">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </span>
+              github.com/anishdhar9
+            </a>
+            <a href="https://www.linkedin.com/in/anishdhar9" target="_blank" rel="noopener" class="contact-item">
+              <span class="contact-icon">in</span>
+              linkedin.com/in/anishdhar9
+            </a>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <div class="section-label" style="margin-bottom:0.75rem;">Location</div>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--muted-2);">Pune, Maharashtra, India<br>Available for opportunities</div>
         </div>
       </div>
     </div>
   </div>
-</header>
+</section>
 
-<!-- PROJECTS -->
-<section class="section" id="projects">
-  <div class="container">
-    <div class="section-label">Engineering Work</div>
-    <div class="section-title">PROJECTS</div>
+<!-- ─── PROJECTS ──────────────────────────────────────────────────── -->
+<section class="section section-blueprint" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-label">Engineering Work</div>
+      <h2 class="section-title">PROJECTS</h2>
+    </div>
     <div class="projects-grid">
 
       <!-- 01 FEATURED -->
-      <div class="project-card featured reveal">
-        <div class="card-image" data-gallery='["bin-wash.jpg","photo_2026-04-04_11-18-13.jpg","photo_2026-04-04_11-18-14 (3).jpg","photo_2026-04-04_11-18-14 (4).jpg"]'>
-          <img src="images/bin-wash.jpg" alt="Inside the SS316 total-containment bin-washing chamber" loading="eager">
+      <div class="card featured reveal">
+        <div class="card-img" data-gallery='["bin-wash.jpg","photo_2026-04-04_11-18-13.jpg","photo_2026-04-04_11-18-14 (3).jpg","photo_2026-04-04_11-18-14 (4).jpg"]'>
+          <img src="images/bin-wash.jpg" alt="SS316 total-containment bin-washing chamber" loading="eager">
         </div>
         <div class="card-body">
-          <div class="card-index">PROJECT 01 &middot; FEATURED</div>
-          <span class="card-tag">Containment Design</span><span class="card-tag">SS316</span><span class="card-tag">Pharma</span>
+          <div class="card-index">PROJECT 01 · FEATURED</div>
+          <div class="card-tags"><span class="tag">Containment Design</span><span class="tag">SS316</span><span class="tag">Pharma</span></div>
           <div class="card-title">Total-Containment Bin Washing System</div>
-          <p class="card-desc">Sole design ownership of a high-value total-containment bin-washing system for potent API bins at Glatt Systems. Delivered the complete design package from concept through detailed drawings, coordinating with procurement, vendors, and the wider project team to reach manufacturing release. Potent API containment makes leak-path elimination and cleanability the primary design constraints.</p>
-          <div class="gist-block">
-            <div class="gist-label">Specification Gist</div>
-            <div class="gist-line"><span class="key">Value</span><span class="val">INR 4.5 Cr total-containment system</span></div>
-            <div class="gist-line"><span class="key">Material</span><span class="val">SS316 structural + contact surfaces</span></div>
-            <div class="gist-line"><span class="key">Scope</span><span class="val">Concept to drawing release; procurement coordination</span></div>
-            <div class="gist-line"><span class="key">Constraint</span><span class="val">Potent API containment; full wash-cycle validation</span></div>
-            <div class="gist-line"><span class="key">Tools</span><span class="val">Autodesk Inventor, Vault PDM, GD&amp;T (ASME Y14.5)</span></div>
+          <p class="card-desc">Sole design ownership of a high-value total-containment bin-washing system for potent API bins at Glatt Systems. Delivered the complete design package from concept through detailed drawings, coordinating procurement, vendors, and the wider project team to manufacturing release. Potent API containment makes leak-path elimination and cleanability the primary design constraints.</p>
+          <div class="spec-block">
+            <div class="spec-label">Specification Gist</div>
+            <div class="spec-row"><span class="spec-key">Value</span><span class="spec-val">INR 4.5 Cr total-containment system</span></div>
+            <div class="spec-row"><span class="spec-key">Material</span><span class="spec-val">SS316 structural + contact surfaces</span></div>
+            <div class="spec-row"><span class="spec-key">Scope</span><span class="spec-val">Concept to drawing release; procurement coordination</span></div>
+            <div class="spec-row"><span class="spec-key">Constraint</span><span class="spec-val">Potent API containment; full wash-cycle validation</span></div>
+            <div class="spec-row"><span class="spec-key">Tools</span><span class="spec-val">Autodesk Inventor, Vault PDM, GD&amp;T (ASME Y14.5)</span></div>
           </div>
         </div>
       </div>
 
       <!-- 02 -->
-      <div class="project-card reveal reveal-d1">
-        <div class="card-image" data-gallery='["ducting.jpg"]'>
-          <img src="images/ducting.jpg" alt="SS316 flanged duct assembly being fitted on shop floor" loading="lazy">
+      <div class="card reveal">
+        <div class="card-img" data-gallery='["ducting.jpg"]'>
+          <img src="images/ducting.jpg" alt="SS316 flanged duct assembly on shop floor" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-index">PROJECT 02</div>
-          <span class="card-tag">Pressure Systems</span><span class="card-tag">Novel Joint Design</span>
+          <div class="card-tags"><span class="tag">Pressure Systems</span><span class="tag">Novel Joint Design</span></div>
           <div class="card-title">SS316 Process Air Ducting System</div>
-          <p class="card-desc">Designed a novel SS316 ducting joining system for pharmaceutical process air supply at Glatt Systems. The design targets elimination of legacy flanged-joint assembly, reducing leak paths and assembly time. Prototype was qualification-tested at 2 bar in a single-connection test.</p>
-          <div class="gist-block">
-            <div class="gist-label">Specification Gist</div>
-            <div class="gist-line"><span class="key">Test pressure</span><span class="val">2 bar (single-connection qualification)</span></div>
-            <div class="gist-line"><span class="key">Material</span><span class="val">SS316 pharma-grade</span></div>
-            <div class="gist-line"><span class="key">Innovation</span><span class="val">Flanged-joint elimination; novel joining geometry</span></div>
-            <div class="gist-line"><span class="key">Application</span><span class="val">Pharmaceutical process air supply ducting</span></div>
+          <p class="card-desc">Designed a novel SS316 ducting joining system for pharmaceutical process air supply at Glatt Systems. The design targets elimination of legacy flanged-joint assembly, reducing leak paths and assembly time. Prototype qualification-tested at 2 bar in a single-connection test.</p>
+          <div class="spec-block">
+            <div class="spec-label">Specification Gist</div>
+            <div class="spec-row"><span class="spec-key">Test pressure</span><span class="spec-val">2 bar (single-connection qualification)</span></div>
+            <div class="spec-row"><span class="spec-key">Material</span><span class="spec-val">SS316 pharma-grade</span></div>
+            <div class="spec-row"><span class="spec-key">Innovation</span><span class="spec-val">Flanged-joint elimination; novel joining geometry</span></div>
           </div>
         </div>
       </div>
 
       <!-- 03 -->
-      <div class="project-card reveal reveal-d2">
-        <div class="card-image" data-gallery='["granulation.jpg","photo_2026-04-04_11-18-14 (2).jpg"]'>
-          <img src="images/granulation.jpg" alt="3-story steel vertical granulation structure" loading="lazy">
+      <div class="card reveal reveal-d1">
+        <div class="card-img" data-gallery='["granulation.jpg","photo_2026-04-04_11-18-14 (2).jpg"]'>
+          <img src="images/granulation.jpg" alt="3-story all-steel vertical granulation structure" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-index">PROJECT 03</div>
-          <span class="card-tag">Structural Design</span><span class="card-tag">Multi-story</span>
+          <div class="card-tags"><span class="tag">Structural Design</span><span class="tag">Multi-story</span><span class="tag">Pharma OEM</span></div>
           <div class="card-title">3-Story Vertical Granulation Line</div>
           <p class="card-desc">Contributed structural design to a 3-story all-steel vertical granulation line for a global pharmaceutical OEM, built for pre-production validation. Part of a 4-member core team coordinating across mechanical, process, and controls sub-teams.</p>
-          <div class="gist-block">
-            <div class="gist-label">Specification Gist</div>
-            <div class="gist-line"><span class="key">Structure</span><span class="val">3-story all-steel; multi-sub-team coordination</span></div>
-            <div class="gist-line"><span class="key">Client</span><span class="val">Global pharmaceutical OEM</span></div>
-            <div class="gist-line"><span class="key">Stage</span><span class="val">Pre-production validation build</span></div>
-            <div class="gist-line"><span class="key">Team</span><span class="val">4-member core (mech + process + controls)</span></div>
+          <div class="spec-block">
+            <div class="spec-label">Specification Gist</div>
+            <div class="spec-row"><span class="spec-key">Structure</span><span class="spec-val">3-story all-steel; cross-team coordination</span></div>
+            <div class="spec-row"><span class="spec-key">Client</span><span class="spec-val">Global pharmaceutical OEM</span></div>
+            <div class="spec-row"><span class="spec-key">Team</span><span class="spec-val">4-member core (mech + process + controls)</span></div>
           </div>
         </div>
       </div>
 
       <!-- 04 -->
-      <div class="project-card reveal reveal-d1">
-        <div class="card-image" data-gallery='["cooling-enclosure.jpg","photo_2026-04-04_11-18-11.jpg","photo_2026-04-04_11-18-13 (3).jpg"]'>
+      <div class="card reveal">
+        <div class="card-img" data-gallery='["cooling-enclosure.jpg","photo_2026-04-04_11-18-11.jpg","photo_2026-04-04_11-18-13 (3).jpg"]'>
           <img src="images/cooling-enclosure.jpg" alt="FDM-printed jet-impingement manifold on e-BAJA car" loading="lazy">
         </div>
         <div class="card-body">
-          <div class="card-index">PROJECT 04 &middot; VJTI RACING</div>
-          <span class="card-tag">Thermal Design</span><span class="card-tag">Additive Mfg.</span><span class="card-tag">SAE e-BAJA</span>
+          <div class="card-index">PROJECT 04 · VJTI RACING</div>
+          <div class="card-tags"><span class="tag">Thermal Design</span><span class="tag">Additive Mfg.</span><span class="tag">SAE e-BAJA</span></div>
           <div class="card-title">AM Jet-Impingement Motor Controller Enclosure</div>
           <p class="card-desc">Engineered a jet-impingement cooling enclosure for the motor controller of VJTI Racing's e-BAJA entry using SLA and FDM additive manufacturing. Designed low-loss manifold geometry to minimise static pressure drop across the forced-air distribution network, reducing auxiliary battery load.</p>
-          <div class="gist-block">
-            <div class="gist-label">Specification Gist</div>
-            <div class="gist-line"><span class="key">Mass</span><span class="val">500 g enclosure (SLA/FDM)</span></div>
-            <div class="gist-line"><span class="key">Target dT</span><span class="val">-25 deg C vs. baseline air-cooled config</span></div>
-            <div class="gist-line"><span class="key">Cooling</span><span class="val">Jet impingement; low-loss manifold geometry</span></div>
-            <div class="gist-line"><span class="key">Result</span><span class="val">AIR 1 Sales Presentation, AIR 5 Overall SAE e-BAJA 2024</span></div>
+          <div class="spec-block">
+            <div class="spec-label">Specification Gist</div>
+            <div class="spec-row"><span class="spec-key">Mass</span><span class="spec-val">500 g enclosure (SLA/FDM)</span></div>
+            <div class="spec-row"><span class="spec-key">Target ΔT</span><span class="spec-val">−25 °C vs. baseline air-cooled config</span></div>
+            <div class="spec-row"><span class="spec-key">Result</span><span class="spec-val">AIR 1 Sales Presentation, AIR 5 Overall — SAE e-BAJA 2024</span></div>
           </div>
         </div>
       </div>
 
       <!-- 05 -->
-      <div class="project-card reveal reveal-d2">
-        <div class="card-image" data-gallery='["vjti-racing.jpg","photo_2026-04-04_11-18-13 (2).jpg","photo_2026-04-04_11-18-15 (2).jpg"]'>
-          <img src="images/vjti-racing.jpg" alt="VJTI Racing EV car being prepped" loading="lazy">
+      <div class="card reveal reveal-d1">
+        <div class="card-img" data-gallery='["vjti-racing.jpg","photo_2026-04-04_11-18-13 (2).jpg","photo_2026-04-04_11-18-15 (2).jpg"]'>
+          <img src="images/vjti-racing.jpg" alt="VJTI Racing EV car" loading="lazy">
         </div>
         <div class="card-body">
-          <div class="card-index">PROJECT 05 &middot; VJTI RACING</div>
-          <span class="card-tag">EV Systems</span><span class="card-tag">HV/LV Design</span><span class="card-tag">ISIE IKR</span>
-          <div class="card-title">EV Powertrain &amp; Electrical Systems &mdash; ISIE IKR 2023</div>
+          <div class="card-index">PROJECT 05 · VJTI RACING</div>
+          <div class="card-tags"><span class="tag">EV Systems</span><span class="tag">HV/LV Design</span><span class="tag">ISIE IKR</span></div>
+          <div class="card-title">EV Powertrain &amp; Electrical Systems — ISIE IKR 2023</div>
           <p class="card-desc">Led low- and high-voltage system design for VJTI Racing's ISIE IKR 2023 EV entry. Implemented a multi-layer startup interlock sequence for HV safety. Recognised with Best Accelerating Vehicle, Best Business Proposal, and AIR 5 EV category.</p>
-          <div class="gist-block">
-            <div class="gist-label">Specification Gist</div>
-            <div class="gist-line"><span class="key">Scope</span><span class="val">LV + HV system design lead</span></div>
-            <div class="gist-line"><span class="key">Safety</span><span class="val">Multi-layer startup interlock sequence</span></div>
-            <div class="gist-line"><span class="key">Awards</span><span class="val">Best Accelerating Vehicle, Best Business Proposal, AIR 5 EV</span></div>
+          <div class="spec-block">
+            <div class="spec-label">Specification Gist</div>
+            <div class="spec-row"><span class="spec-key">Scope</span><span class="spec-val">LV + HV system design lead</span></div>
+            <div class="spec-row"><span class="spec-key">Safety</span><span class="spec-val">Multi-layer startup interlock sequence</span></div>
+            <div class="spec-row"><span class="spec-key">Awards</span><span class="spec-val">Best Accelerating Vehicle, Best Business Proposal, AIR 5 EV</span></div>
           </div>
         </div>
       </div>
 
       <!-- 06 -->
-      <div class="project-card reveal reveal-d1">
-        <div class="card-image" data-gallery='["rocket-nozzle.jpg"]'>
-          <img src="images/rocket-nozzle.jpg" alt="SLA/FDM converging-diverging nozzle assembly" loading="lazy">
+      <div class="card reveal">
+        <div class="card-img" data-gallery='["rocket-nozzle.jpg"]'>
+          <img src="images/rocket-nozzle.jpg" alt="Converging-diverging nozzle assembly" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-index">PROJECT 06</div>
-          <span class="card-tag">Precision Machining</span><span class="card-tag">Propulsion</span>
-          <div class="card-title">IPA&ndash;Air Rocket Engine Nozzle</div>
+          <div class="card-tags"><span class="tag">Precision Machining</span><span class="tag">Propulsion</span></div>
+          <div class="card-title">IPA–Air Rocket Engine Nozzle</div>
           <p class="card-desc">Designed a converging-diverging nozzle for 300 N sea-level thrust using isopropyl alcohol-air propellant. CNC-machined in mild steel on a Jyoti VMC850, including fixturing design, toolpath programming in CAM, and post-test failure analysis.</p>
-          <div class="gist-block">
-            <div class="gist-label">Specification Gist</div>
-            <div class="gist-line"><span class="key">Design thrust</span><span class="val">300 N sea-level</span></div>
-            <div class="gist-line"><span class="key">Propellant</span><span class="val">Isopropyl alcohol - air</span></div>
-            <div class="gist-line"><span class="key">Geometry</span><span class="val">Converging-diverging (De Laval)</span></div>
-            <div class="gist-line"><span class="key">Machine</span><span class="val">Jyoti VMC850; fixturing + toolpath programmed</span></div>
-            <div class="gist-line"><span class="key">Post-test</span><span class="val">Failure analysis conducted</span></div>
+          <div class="spec-block">
+            <div class="spec-label">Specification Gist</div>
+            <div class="spec-row"><span class="spec-key">Design thrust</span><span class="spec-val">300 N sea-level</span></div>
+            <div class="spec-row"><span class="spec-key">Propellant</span><span class="spec-val">Isopropyl alcohol — air</span></div>
+            <div class="spec-row"><span class="spec-key">Geometry</span><span class="spec-val">Converging-diverging (De Laval)</span></div>
+            <div class="spec-row"><span class="spec-key">Machine</span><span class="spec-val">Jyoti VMC850; fixturing + toolpath programmed</span></div>
           </div>
         </div>
       </div>
 
-      <!-- 07 -->
-      <div class="project-card span-2 reveal">
-        <div class="card-image" data-gallery='["eaf-cooling.jpg","photo_2026-04-04_11-18-12.jpg","photo_2026-04-04_11-18-15 (3).jpg"]'>
-          <img src="images/eaf-cooling.jpg" alt="Glowing steel billet in continuous casting line" loading="lazy">
+      <!-- 07 WIDE -->
+      <div class="card wide reveal">
+        <div class="card-img" data-gallery='["eaf-cooling.jpg","photo_2026-04-04_11-18-12.jpg","photo_2026-04-04_11-18-15 (3).jpg"]'>
+          <img src="images/eaf-cooling.jpg" alt="35T Electric Arc Furnace cooling circuit" loading="lazy">
         </div>
         <div class="card-body">
-          <div class="card-index">PROJECT 07 &middot; INTERNSHIP</div>
-          <span class="card-tag">Thermal Audit</span><span class="card-tag">Heavy Industry</span><span class="card-tag">EAF</span>
-          <div class="card-title">35T Electric Arc Furnace &mdash; Cooling Circuit Audit</div>
+          <div class="card-index">PROJECT 07 · INTERNSHIP</div>
+          <div class="card-tags"><span class="tag">Thermal Audit</span><span class="tag">Heavy Industry</span><span class="tag">EAF</span></div>
+          <div class="card-title">35T Electric Arc Furnace — Cooling Circuit Audit</div>
           <p class="card-desc">Audited the water-cooling circuit of a 35T Electric Arc Furnace and continuous casting line at Saarloha Advanced Materials. Quantified thermal losses from slag deposition on cooling panels via analysis of 30+ research papers and plant instrumentation data. Produced a structured improvement report with design modification recommendations.</p>
-          <div class="gist-block">
-            <div class="gist-label">Specification Gist</div>
-            <div class="gist-line"><span class="key">Equipment</span><span class="val">35T EAF + continuous casting line</span></div>
-            <div class="gist-line"><span class="key">Focus</span><span class="val">Slag deposition thermal loss quantification</span></div>
-            <div class="gist-line"><span class="key">Method</span><span class="val">30+ research papers + plant instrumentation data</span></div>
-            <div class="gist-line"><span class="key">Output</span><span class="val">Structured improvement report + design mods</span></div>
+          <div class="spec-block">
+            <div class="spec-label">Specification Gist</div>
+            <div class="spec-row"><span class="spec-key">Equipment</span><span class="spec-val">35T EAF + continuous casting line</span></div>
+            <div class="spec-row"><span class="spec-key">Focus</span><span class="spec-val">Slag deposition thermal loss quantification</span></div>
+            <div class="spec-row"><span class="spec-key">Method</span><span class="spec-val">30+ research papers + plant instrumentation data</span></div>
+            <div class="spec-row"><span class="spec-key">Output</span><span class="spec-val">Structured improvement report + design modifications</span></div>
           </div>
         </div>
       </div>
@@ -500,34 +779,152 @@
   </div>
 </section>
 
+<!-- ─── RESUME ────────────────────────────────────────────────────── -->
+<section class="section" id="resume">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-label">Credentials</div>
+      <h2 class="section-title">RESUME</h2>
+    </div>
+    <div class="resume-download-bar reveal">
+      <span>Anish_Dhar_Resume.pdf &mdash; Mechanical Engineer</span>
+      <a href="Anish_Dhar_Resume.pdf" download class="btn btn-primary" style="font-size:0.62rem;">&#8595; Download PDF</a>
+    </div>
+    <div class="resume-layout">
 
-<!-- CFD / COMPUTATIONAL -->
-<section class="section" id="computational">
-  <div class="container">
-    <div class="section-label">Numerical Methods &amp; Code</div>
-    <div class="section-title">COMPUTATIONAL WORK</div>
+      <!-- LEFT: timeline + education -->
+      <div>
+        <div class="section-label reveal" style="margin-bottom:1.5rem;">Experience</div>
+        <div class="timeline">
+
+          <div class="tl-item reveal">
+            <div class="tl-dot"></div>
+            <div class="tl-header">
+              <div class="tl-company">Glatt Systems</div>
+              <div class="tl-role">Engineering Trainee</div>
+            </div>
+            <div class="tl-period">Jun 2025 — Present · Pune, IN</div>
+            <ul class="tl-points">
+              <li>Design ownership of INR 4.5 Cr total-containment bin-washing system; complete package through manufacturing release, coordinating procurement and project team.</li>
+              <li>Novel SS316 ducting joining system for pharma process air; prototype qualification-tested at 2 bar; targets elimination of legacy flanged-joint assembly.</li>
+              <li>Structural design contribution to 3-story all-steel vertical granulation line for pre-production validation; 4-member core team across mech, process, and controls.</li>
+              <li>Managed ECNs across active design packages via Vault PDM with revision-controlled drawing releases to vendors and manufacturing.</li>
+              <li>Direct manufacturing floor exposure across fabrication, assembly, and inspection; GD&amp;T standards across 100+ part assemblies.</li>
+            </ul>
+          </div>
+
+          <div class="tl-item reveal reveal-d1">
+            <div class="tl-dot"></div>
+            <div class="tl-header">
+              <div class="tl-company">Saarloha Advanced Materials</div>
+              <div class="tl-role">Engineering Intern — Thermals</div>
+            </div>
+            <div class="tl-period">Jun 2024 — Aug 2024 · Pune, IN</div>
+            <ul class="tl-points">
+              <li>Audited water-cooling circuit of a 35T EAF and continuous casting line; quantified slag-deposition thermal losses via 30+ research papers and plant data.</li>
+              <li>Produced structured improvement report with recommended design modifications to reduce parasitic heat losses in the EAF water-cooling loop.</li>
+            </ul>
+          </div>
+
+          <div class="tl-item reveal reveal-d2">
+            <div class="tl-dot"></div>
+            <div class="tl-header">
+              <div class="tl-company">VJTI Racing</div>
+              <div class="tl-role">Thermal Systems Lead</div>
+            </div>
+            <div class="tl-period">Jun 2022 — Mar 2024 · Mumbai, IN</div>
+            <ul class="tl-points">
+              <li>Jet-impingement cooling enclosure for motor controller (SLA/FDM AM); 500 g; target −25 °C vs. baseline air-cooled config.</li>
+              <li>Low-loss manifold geometry minimising static pressure drop, reducing auxiliary battery load.</li>
+              <li>AIR 1 Sales Presentation, AIR 5 Overall — SAE e-BAJA 2024.</li>
+              <li>LV + HV system design lead, ISIE IKR 2023; multi-layer startup interlock — Best Accelerating Vehicle, Best Business Proposal, AIR 5 EV.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div style="margin-top:3rem;">
+          <div class="section-label reveal" style="margin-bottom:1.25rem;">Education</div>
+          <div class="edu-list">
+            <div class="edu-item reveal">
+              <div class="edu-inst">VJTI Mumbai</div>
+              <div class="edu-degree">B.Tech — Mechanical Engineering · Dec 2021 – May 2025</div>
+              <div class="edu-score">7.67 CGPA</div>
+            </div>
+            <div class="edu-item reveal reveal-d1">
+              <div class="edu-inst">City International School</div>
+              <div class="edu-degree">HSC — CBSE · Jul 2021</div>
+              <div class="edu-score">88.2%</div>
+            </div>
+            <div class="edu-item reveal reveal-d2">
+              <div class="edu-inst">The Bishop's School</div>
+              <div class="edu-degree">SSC — ICSE · May 2019</div>
+              <div class="edu-score">96.2%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: skills -->
+      <div class="resume-skills reveal reveal-d1">
+        <div>
+          <div class="rs-group-title">CAD / PDM</div>
+          <div class="rs-item"><span class="rs-name">Autodesk Inventor</span><div class="rs-bar"><div class="rs-fill" style="width:85%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">Vault PDM</span><div class="rs-bar"><div class="rs-fill" style="width:80%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">Fusion 360</span><div class="rs-bar"><div class="rs-fill" style="width:65%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">SolidWorks</span><div class="rs-bar"><div class="rs-fill" style="width:50%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">GD&amp;T ASME Y14.5</span><div class="rs-bar"><div class="rs-fill" style="width:75%"></div></div></div>
+        </div>
+        <div>
+          <div class="rs-group-title">Simulation / CAE</div>
+          <div class="rs-item"><span class="rs-name">ANSYS Structural</span><div class="rs-bar"><div class="rs-fill" style="width:75%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">ANSYS Thermal</span><div class="rs-bar"><div class="rs-fill" style="width:70%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">ANSYS Fluent CFD</span><div class="rs-bar"><div class="rs-fill" style="width:55%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">MATLAB / Simulink</span><div class="rs-bar"><div class="rs-fill" style="width:60%"></div></div></div>
+        </div>
+        <div>
+          <div class="rs-group-title">Manufacturing</div>
+          <div class="rs-item"><span class="rs-name">CNC VMC850</span><div class="rs-bar"><div class="rs-fill" style="width:65%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">FDM / SLA AM</span><div class="rs-bar"><div class="rs-fill" style="width:70%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">SS316 Fabrication</span><div class="rs-bar"><div class="rs-fill" style="width:65%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">ECN / Change Mgmt</span><div class="rs-bar"><div class="rs-fill" style="width:75%"></div></div></div>
+        </div>
+        <div>
+          <div class="rs-group-title">Computation</div>
+          <div class="rs-item"><span class="rs-name">Python (NumPy)</span><div class="rs-bar"><div class="rs-fill" style="width:60%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">CFD Numerics</span><div class="rs-bar"><div class="rs-fill" style="width:65%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">MATLAB</span><div class="rs-bar"><div class="rs-fill" style="width:60%"></div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CFD / COMPUTATIONAL ───────────────────────────────────────── -->
+<section class="section section-blueprint" id="computational">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-label">Numerical Methods &amp; Code</div>
+      <h2 class="section-title">COMPUTATIONAL WORK</h2>
+    </div>
     <div class="cfd-grid">
 
-      <!-- SOD SHOCK TUBE -->
       <div class="cfd-card reveal">
         <div class="cfd-header">
           <div class="cfd-index">CFD 01</div>
-          <a href="https://github.com/anishdhar9/Supersonic-Flows-in-Sod-Shock-Tube" target="_blank" class="cfd-github-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://github.com/anishdhar9/Supersonic-Flows-in-Sod-Shock-Tube" target="_blank" rel="noopener" class="cfd-gh-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             View on GitHub
           </a>
         </div>
         <div class="cfd-title">Supersonic Flows in Sod Shock Tube</div>
-        <div class="cfd-tags">
-          <span class="card-tag">Python</span><span class="card-tag">Euler Equations</span><span class="card-tag">Hyperbolic PDE</span>
-        </div>
-        <p class="cfd-desc">
-          Numerical solution of the 1D Euler equations for the classical Sod shock tube problem. Implements two explicit finite-difference schemes &mdash; Lax and MacCormack &mdash; and benchmarks their accuracy and stability across varying grid subdivisions and CFL numbers. Captures the three characteristic wave structures: rarefaction fan, contact discontinuity, and shock front.
-        </p>
-        <div class="cfd-spec-grid">
+        <div class="card-tags"><span class="tag">Python</span><span class="tag">Euler Equations</span><span class="tag">Hyperbolic PDE</span></div>
+        <p class="cfd-desc">Numerical solution of the 1D Euler equations for the classical Sod shock tube problem. Implements Lax and MacCormack finite-difference schemes and benchmarks their accuracy and stability across varying grid subdivisions and CFL numbers. Captures the three characteristic wave structures: rarefaction fan, contact discontinuity, and shock front.</p>
+        <div class="cfd-specs">
           <div class="cfd-spec">
             <div class="cfd-spec-label">Governing eqs.</div>
-            <div class="cfd-spec-val">1D Euler (conserved form: rho, rho*u, E)</div>
+            <div class="cfd-spec-val">1D Euler (conserved form: ρ, ρu, E)</div>
           </div>
           <div class="cfd-spec">
             <div class="cfd-spec-label">Schemes</div>
@@ -535,49 +932,44 @@
           </div>
           <div class="cfd-spec">
             <div class="cfd-spec-label">Parameters swept</div>
-            <div class="cfd-spec-val">Grid subdivisions N, CFL number (stability analysis)</div>
+            <div class="cfd-spec-val">Grid subdivisions N, CFL number</div>
           </div>
           <div class="cfd-spec">
             <div class="cfd-spec-label">Output</div>
-            <div class="cfd-spec-val">rho, u, p profiles vs. exact Riemann solution</div>
+            <div class="cfd-spec-val">ρ, u, p profiles vs. exact Riemann solution</div>
           </div>
         </div>
-        <div class="cfd-code-snippet">
-          <div class="cfd-code-label">&#9654; MacCormack predictor step (conserved variables)</div>
-          <pre><code><span class="tok-comment"># Predictor: forward difference</span>
+        <div class="cfd-code">
+          <div class="cfd-code-label">▶ MacCormack predictor step (conserved variables)</div>
+          <pre><code><span class="tok-cmt"># Predictor: forward difference</span>
 U_pred[:, 1:-1] = U[:, 1:-1] - dt/dx * (F[:, 2:] - F[:, 1:-1])
 
-<span class="tok-comment"># Corrector: backward difference on predicted fluxes</span>
+<span class="tok-cmt"># Corrector: backward difference on predicted fluxes</span>
 F_pred = compute_flux(U_pred)
 U[:, 1:-1] = 0.5*(U[:, 1:-1] + U_pred[:, 1:-1]
              - dt/dx*(F_pred[:, 1:-1] - F_pred[:, :-2]))</code></pre>
         </div>
       </div>
 
-      <!-- CFD EXPERIMENTS -->
       <div class="cfd-card reveal reveal-d1">
         <div class="cfd-header">
           <div class="cfd-index">CFD 02</div>
-          <a href="https://github.com/anishdhar9/Experiments-in-Computational-Fluid-Dynamics" target="_blank" class="cfd-github-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a href="https://github.com/anishdhar9/Experiments-in-Computational-Fluid-Dynamics" target="_blank" rel="noopener" class="cfd-gh-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             View on GitHub
           </a>
         </div>
         <div class="cfd-title">Experiments in Computational Fluid Dynamics</div>
-        <div class="cfd-tags">
-          <span class="card-tag">Python</span><span class="card-tag">MATLAB</span><span class="card-tag">FDM</span>
-        </div>
-        <p class="cfd-desc">
-          A collection of from-scratch numerical implementations spanning classical CFD problems: finite-difference schemes for the convection-diffusion equation, heat conduction, lid-driven cavity flow, and boundary layer analysis. Focuses on scheme accuracy, numerical diffusion, and grid convergence behaviour rather than using commercial solvers.
-        </p>
-        <div class="cfd-spec-grid">
+        <div class="card-tags"><span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">FDM</span></div>
+        <p class="cfd-desc">A collection of from-scratch numerical implementations spanning classical CFD problems: finite-difference schemes for the convection-diffusion equation, heat conduction, lid-driven cavity flow, and boundary layer analysis. Focuses on scheme accuracy, numerical diffusion, and grid convergence behaviour rather than commercial solvers.</p>
+        <div class="cfd-specs">
           <div class="cfd-spec">
             <div class="cfd-spec-label">Methods</div>
             <div class="cfd-spec-val">FDM: explicit, implicit, Crank-Nicolson; upwind differencing</div>
           </div>
           <div class="cfd-spec">
-            <div class="cfd-spec-label">Problems covered</div>
-            <div class="cfd-spec-val">1D/2D heat eq., convection-diffusion, cavity flow (Navier-Stokes)</div>
+            <div class="cfd-spec-label">Problems</div>
+            <div class="cfd-spec-val">1D/2D heat eq., convection-diffusion, cavity flow (N-S)</div>
           </div>
           <div class="cfd-spec">
             <div class="cfd-spec-label">Validation</div>
@@ -588,13 +980,13 @@ U[:, 1:-1] = 0.5*(U[:, 1:-1] + U_pred[:, 1:-1]
             <div class="cfd-spec-val">Python (NumPy, Matplotlib) + MATLAB</div>
           </div>
         </div>
-        <div class="cfd-code-snippet">
-          <div class="cfd-code-label">&#9654; Upwind scheme for 1D convection-diffusion</div>
-          <pre><code><span class="tok-comment"># CFL = u*dt/dx, Pe = u*dx/nu (cell Peclet number)</span>
+        <div class="cfd-code">
+          <div class="cfd-code-label">▶ Upwind scheme for 1D convection-diffusion</div>
+          <pre><code><span class="tok-cmt"># CFL = u·dt/dx, Pe = u·dx/ν (cell Peclet number)</span>
 <span class="tok-kw">for</span> n <span class="tok-kw">in</span> range(nt):
     u_new[1:-1] = (u[1:-1]
-        - CFL*(u[1:-1] - u[:-2])          <span class="tok-comment"># upwind convection</span>
-        + (dt*nu/dx**2)*(u[2:] - 2*u[1:-1] + u[:-2]))  <span class="tok-comment"># diffusion</span>
+        - CFL*(u[1:-1] - u[:-2])         <span class="tok-cmt"># upwind convection</span>
+        + (dt*nu/dx**2)*(u[2:] - 2*u[1:-1] + u[:-2])) <span class="tok-cmt"># diffusion</span>
     u = u_new.copy()</code></pre>
         </div>
       </div>
@@ -603,154 +995,53 @@ U[:, 1:-1] = 0.5*(U[:, 1:-1] + U_pred[:, 1:-1]
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section class="section" id="experience">
-  <div class="container">
-    <div class="section-label">Work History</div>
-    <div class="section-title">EXPERIENCE</div>
-    <div class="experience-item reveal">
-      <div class="exp-meta">
-        <div class="exp-company">Glatt Systems</div>
-        <div class="exp-period">Jun 2025 &mdash; Present &middot; Pune, IN</div>
-      </div>
-      <div>
-        <div class="exp-role">Engineering Trainee</div>
-        <ul class="exp-points">
-          <li>Design ownership of INR 4.5 Cr total-containment bin-washing system for potent API bins; delivered complete design package through to manufacturing release, coordinating procurement and wider project team.</li>
-          <li>Designed novel SS316 ducting joining system for pharmaceutical process air supply; prototype qualification-tested at 2 bar; design targets elimination of legacy flanged-joint assembly.</li>
-          <li>Contributed structural design to a 3-story all-steel vertical granulation line for pre-production validation for a global pharmaceutical OEM; 4-member core team across mech, process, and controls.</li>
-          <li>Managed ECNs across active design packages; tracked part-level changes through Vault PDM with revision-controlled drawing releases to vendors and manufacturing.</li>
-          <li>Direct manufacturing floor exposure across fabrication, assembly, and inspection; maintained GD&amp;T standards across 100+ part assemblies.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="experience-item reveal reveal-d1">
-      <div class="exp-meta">
-        <div class="exp-company">Saarloha Advanced Materials</div>
-        <div class="exp-period">Jun 2024 &mdash; Aug 2024 &middot; Pune, IN</div>
-      </div>
-      <div>
-        <div class="exp-role">Engineering Intern &mdash; Thermals</div>
-        <ul class="exp-points">
-          <li>Audited water-cooling circuit of a 35T Electric Arc Furnace and continuous casting line; quantified thermal losses from slag deposition via 30+ research papers and plant data.</li>
-          <li>Produced structured improvement report with recommended design modifications to reduce parasitic heat losses in the EAF water-cooling loop.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="experience-item reveal reveal-d2">
-      <div class="exp-meta">
-        <div class="exp-company">VJTI Racing</div>
-        <div class="exp-period">Jun 2022 &mdash; Mar 2024 &middot; Mumbai, IN</div>
-      </div>
-      <div>
-        <div class="exp-role">Thermal Systems Lead</div>
-        <ul class="exp-points">
-          <li>Engineered jet-impingement cooling enclosure for motor controller (SLA/FDM AM); 500 g mass; target -25 deg C vs. baseline air-cooled config.</li>
-          <li>Designed low-loss manifold geometry minimising static pressure drop across forced-air distribution network, reducing auxiliary battery load.</li>
-          <li>AIR 1 Sales Presentation, AIR 5 Overall at SAE e-BAJA 2024.</li>
-          <li>Led LV + HV system design for ISIE IKR 2023; multi-layer startup interlock &mdash; Best Accelerating Vehicle, Best Business Proposal, AIR 5 EV.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section class="section" id="skills">
-  <div class="container">
-    <div class="section-label">Technical Competencies</div>
-    <div class="section-title">SKILLS</div>
-    <div class="skills-grid reveal">
-      <div class="skill-group">
-        <h4>CAD / PDM</h4>
-        <div class="skill-item"><span class="skill-name">Autodesk Inventor</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Vault PDM</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Fusion 360</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">SolidWorks</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:50%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">GD&amp;T ASME Y14.5</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-      </div>
-      <div class="skill-group">
-        <h4>Simulation / CAE</h4>
-        <div class="skill-item"><span class="skill-name">ANSYS Structural</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">ANSYS Thermal</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">ANSYS Fluent CFD</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Mesh Convergence</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">MATLAB / Simulink</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
-      </div>
-      <div class="skill-group">
-        <h4>Manufacturing</h4>
-        <div class="skill-item"><span class="skill-name">CNC VMC850</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">FDM / SLA AM</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">SS316 Fabrication</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">ECN / Change Mgmt</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section class="section" id="education">
-  <div class="container">
-    <div class="section-label">Academic Background</div>
-    <div class="section-title">EDUCATION</div>
-    <div class="edu-row reveal">
-      <div class="edu-inst">VJTI Mumbai</div>
-      <div class="edu-degree">B.Tech &mdash; Mechanical Engineering &middot; Dec 2021 &ndash; May 2025</div>
-      <div class="edu-score">7.67</div>
-    </div>
-    <div class="edu-row reveal reveal-d1">
-      <div class="edu-inst">City International School</div>
-      <div class="edu-degree">HSC &mdash; CBSE &middot; Jul 2021</div>
-      <div class="edu-score">88.2%</div>
-    </div>
-    <div class="edu-row reveal reveal-d2">
-      <div class="edu-inst">The Bishop's School</div>
-      <div class="edu-degree">SSC &mdash; ICSE &middot; May 2019</div>
-      <div class="edu-score">96.2%</div>
-    </div>
-  </div>
-</section>
-
+<!-- ─── FOOTER ───────────────────────────────────────────────────── -->
 <footer>
-  <div class="container">
-    <div class="footer-name">ANISH DHAR</div>
-    <div class="footer-sub">Mechanical Engineer &middot; Pune, India &middot; Available for opportunities</div>
-    <div class="footer-links">
-      <a href="mailto:anish27109@gmail.com">Email</a>
-      <a href="https://github.com/anishdhar9" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/anishdhar9" target="_blank">LinkedIn</a>
-      <a href="tel:+917499634319">+91 74996 34319</a>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-name">ANISH DHAR</div>
+        <div class="footer-sub">Mechanical Engineer &middot; Pune, India &middot; Available for opportunities</div>
+      </div>
+      <nav class="footer-links">
+        <a href="mailto:anish27109@gmail.com">Email</a>
+        <a href="https://github.com/anishdhar9" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/anishdhar9" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="tel:+917499634319">+91 74996 34319</a>
+        <a href="Anish_Dhar_Resume.pdf" download style="color:var(--accent);">&#8595; Resume</a>
+      </nav>
     </div>
   </div>
 </footer>
 
 <script>
 (function () {
-  // STICKY NAV
-  var stickyNav = document.getElementById('sticky-nav');
-  var headerEl = document.querySelector('header');
-  new IntersectionObserver(function (entries) {
-    stickyNav.classList.toggle('visible', !entries[0].isIntersecting);
-  }, { threshold: 0 }).observe(headerEl);
+  'use strict';
 
-  // HAMBURGER
-  var hamburger = document.getElementById('hamburger');
+  /* ── NAV show/hide ───────────────────────────────────────────── */
+  var nav = document.getElementById('site-nav');
+  var hero = document.querySelector('.hero');
+  new IntersectionObserver(function (entries) {
+    nav.classList.toggle('show', !entries[0].isIntersecting);
+  }, { threshold: 0 }).observe(hero);
+
+  /* ── Hamburger ───────────────────────────────────────────────── */
+  var burger = document.getElementById('hamburger');
   var mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', function () {
-    hamburger.classList.toggle('open');
+  burger.addEventListener('click', function () {
+    burger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
   });
   mobileMenu.querySelectorAll('a').forEach(function (a) {
     a.addEventListener('click', function () {
-      hamburger.classList.remove('open');
+      burger.classList.remove('open');
       mobileMenu.classList.remove('open');
     });
   });
 
-  // SCROLL SPY
+  /* ── Scroll spy ──────────────────────────────────────────────── */
   var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.sticky-nav-links a, .mobile-menu a');
+  var navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
   var spyObs = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -759,11 +1050,10 @@ U[:, 1:-1] = 0.5*(U[:, 1:-1] + U_pred[:, 1:-1]
         });
       }
     });
-  }, { rootMargin: '-30% 0px -60% 0px' });
+  }, { rootMargin: '-25% 0px -65% 0px' });
   sections.forEach(function (s) { spyObs.observe(s); });
 
-  // SCROLL REVEAL
-  var revealEls = document.querySelectorAll('.reveal');
+  /* ── Scroll reveal ───────────────────────────────────────────── */
   var revealObs = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -771,101 +1061,79 @@ U[:, 1:-1] = 0.5*(U[:, 1:-1] + U_pred[:, 1:-1]
         revealObs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.07 });
-  revealEls.forEach(function (el) { revealObs.observe(el); });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
 
-  // LIGHTBOX
-  var lbImages = [];
-  var lbIndex = 0;
-  var lightbox = document.getElementById('lightbox');
+  /* ── Lightbox ────────────────────────────────────────────────── */
+  var lbImages = [], lbIdx = 0;
+  var lb = document.getElementById('lightbox');
   var lbImg = document.getElementById('lb-img');
-  var lbPrev = document.getElementById('lb-prev');
-  var lbNext = document.getElementById('lb-next');
   var lbCounter = document.getElementById('lb-counter');
 
-  function openLightbox(images, startIndex) {
-    lbImages = images;
-    lbIndex = startIndex;
-    renderLightbox();
-    lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden';
+  function openLb(images, startIdx) {
+    lbImages = images; lbIdx = startIdx; renderLb();
+    lb.classList.add('open'); document.body.style.overflow = 'hidden';
+  }
+  function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  function renderLb() {
+    lbImg.src = 'images/' + encodeURIComponent(lbImages[lbIdx]);
+    var m = lbImages.length > 1;
+    document.getElementById('lb-prev').style.display = m ? 'flex' : 'none';
+    document.getElementById('lb-next').style.display = m ? 'flex' : 'none';
+    lbCounter.textContent = m ? (lbIdx + 1) + ' / ' + lbImages.length : '';
   }
 
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function renderLightbox() {
-    lbImg.src = 'images/' + encodeURIComponent(lbImages[lbIndex]);
-    var hasMult = lbImages.length > 1;
-    lbPrev.style.display = hasMult ? 'flex' : 'none';
-    lbNext.style.display = hasMult ? 'flex' : 'none';
-    lbCounter.textContent = hasMult ? (lbIndex + 1) + ' / ' + lbImages.length : '';
-  }
-
-  document.getElementById('lb-close').addEventListener('click', closeLightbox);
-  lbPrev.addEventListener('click', function () {
-    lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
-    renderLightbox();
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  document.getElementById('lb-prev').addEventListener('click', function () {
+    lbIdx = (lbIdx - 1 + lbImages.length) % lbImages.length; renderLb();
   });
-  lbNext.addEventListener('click', function () {
-    lbIndex = (lbIndex + 1) % lbImages.length;
-    renderLightbox();
+  document.getElementById('lb-next').addEventListener('click', function () {
+    lbIdx = (lbIdx + 1) % lbImages.length; renderLb();
   });
-  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
   document.addEventListener('keydown', function (e) {
-    if (!lightbox.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft' && lbImages.length > 1) { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; renderLightbox(); }
-    if (e.key === 'ArrowRight' && lbImages.length > 1) { lbIndex = (lbIndex + 1) % lbImages.length; renderLightbox(); }
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') { lbIdx = (lbIdx - 1 + lbImages.length) % lbImages.length; renderLb(); }
+    if (e.key === 'ArrowRight') { lbIdx = (lbIdx + 1) % lbImages.length; renderLb(); }
   });
 
-  // GALLERY INIT
-  document.querySelectorAll('.card-image[data-gallery]').forEach(function (container) {
+  /* ── Card image galleries ────────────────────────────────────── */
+  document.querySelectorAll('.card-img[data-gallery]').forEach(function (container) {
     var images = JSON.parse(container.getAttribute('data-gallery'));
     var current = 0;
     var img = container.querySelector('img');
 
-    img.addEventListener('click', function () { openLightbox(images, current); });
-
+    img.addEventListener('click', function () { openLb(images, current); });
     if (images.length <= 1) return;
 
-    var prevBtn = document.createElement('button');
-    prevBtn.className = 'gallery-btn prev';
-    prevBtn.innerHTML = '&#8249;';
-    prevBtn.setAttribute('aria-label', 'Previous image');
+    var prev = document.createElement('button');
+    prev.className = 'gal-btn prev'; prev.innerHTML = '&#8249;'; prev.setAttribute('aria-label', 'Previous');
+    var next = document.createElement('button');
+    next.className = 'gal-btn next'; next.innerHTML = '&#8250;'; next.setAttribute('aria-label', 'Next');
 
-    var nextBtn = document.createElement('button');
-    nextBtn.className = 'gallery-btn next';
-    nextBtn.innerHTML = '&#8250;';
-    nextBtn.setAttribute('aria-label', 'Next image');
-
-    var dotsWrap = document.createElement('div');
-    dotsWrap.className = 'gallery-dots';
+    var dots = document.createElement('div'); dots.className = 'gal-dots';
     images.forEach(function (_, i) {
       var dot = document.createElement('button');
-      dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+      dot.className = 'gal-dot' + (i === 0 ? ' active' : '');
       dot.setAttribute('aria-label', 'Image ' + (i + 1));
-      dot.addEventListener('click', function (e) { e.stopPropagation(); showImage(i); });
-      dotsWrap.appendChild(dot);
+      dot.addEventListener('click', function (e) { e.stopPropagation(); show(i); });
+      dots.appendChild(dot);
     });
 
-    container.appendChild(prevBtn);
-    container.appendChild(nextBtn);
-    container.appendChild(dotsWrap);
+    container.appendChild(prev); container.appendChild(next); container.appendChild(dots);
 
-    function showImage(idx) {
+    function show(idx) {
       current = (idx + images.length) % images.length;
       img.src = 'images/' + encodeURIComponent(images[current]);
-      dotsWrap.querySelectorAll('.gallery-dot').forEach(function (dot, i) {
-        dot.classList.toggle('active', i === current);
+      dots.querySelectorAll('.gal-dot').forEach(function (d, i) {
+        d.classList.toggle('active', i === current);
       });
     }
-
-    prevBtn.addEventListener('click', function (e) { e.stopPropagation(); showImage(current - 1); });
-    nextBtn.addEventListener('click', function (e) { e.stopPropagation(); showImage(current + 1); });
+    prev.addEventListener('click', function (e) { e.stopPropagation(); show(current - 1); });
+    next.addEventListener('click', function (e) { e.stopPropagation(); show(current + 1); });
   });
+
 })();
 </script>
 </body>
