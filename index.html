@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anish Dhar — Mechanical Engineer</title>
-<meta name="description" content="Mechanical engineer with hands-on ownership of pharma capital equipment, competitive motorsport CAE, and precision machining.">
+<meta name="description" content="Mechanical engineer with a background in structural and thermal simulation and end-to-end product development — from concept to manufacturing release.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600;1,9..144,700;1,9..144,900&family=Outfit:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Outfit:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
 /* ─── TOKENS ──────────────────────────────────────────────────────── */
 :root {
@@ -29,7 +29,7 @@
   --muted-2:  #A6ABD8;
   --grad: linear-gradient(100deg, var(--lavender) 0%, var(--pink) 48%, var(--coral) 100%);
 
-  --font-display: 'Fraunces', Georgia, serif;
+  --font-display: 'Unbounded', sans-serif;
   --font-body:    'Outfit', sans-serif;
   --font-mono:    'DM Mono', monospace;
 
@@ -80,8 +80,8 @@ body::before {
   border-bottom: 1px solid var(--rule);
 }
 .nav-logo {
-  font-family: var(--font-display); font-style: italic; font-weight: 700;
-  font-size: 1.2rem; white-space: nowrap;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 0.95rem; white-space: nowrap;
   background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .nav-links { display: flex; gap: 0.25rem; align-items: center; }
@@ -178,9 +178,9 @@ body::before {
 .eyebrow-line { flex: 1; max-width: 90px; height: 1px; background: linear-gradient(90deg, rgba(98,208,232,0.5), transparent); }
 
 .hero-name {
-  font-family: var(--font-display); font-style: italic; font-weight: 900;
-  font-size: clamp(4.2rem, 11vw, 8.75rem);
-  line-height: 0.98; letter-spacing: -0.01em;
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(2.6rem, 7vw, 5.25rem);
+  line-height: 1.12; letter-spacing: 0;
   color: var(--text);
   margin-bottom: 0.8rem;
 }
@@ -201,8 +201,8 @@ body::before {
 }
 .hero-stats { display: flex; gap: 3rem; }
 .hero-stat-val {
-  font-family: var(--font-display); font-style: italic; font-weight: 700;
-  font-size: 2.1rem; color: var(--coral); line-height: 1;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.4rem; color: var(--coral); line-height: 1.15;
 }
 .hero-stat-label {
   font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em;
@@ -254,9 +254,9 @@ body::before {
   content: ''; display: block; width: 24px; height: 1px; background: var(--cyan);
 }
 .section-title {
-  font-family: var(--font-display); font-style: italic; font-weight: 700;
-  font-size: clamp(2.4rem, 5vw, 3.6rem);
-  line-height: 1.05; color: var(--text);
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.7rem, 3.8vw, 2.7rem);
+  line-height: 1.2; color: var(--text);
 }
 
 /* Aurora glow for feature sections */
@@ -348,8 +348,8 @@ body::before {
   border-radius: 999px;
 }
 .card-title {
-  font-family: var(--font-display); font-style: italic; font-weight: 600;
-  font-size: 1.45rem; line-height: 1.15;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.1rem; line-height: 1.4;
   color: var(--text); margin-bottom: 0.75rem;
 }
 .card-desc { font-size: 0.85rem; font-weight: 300; color: var(--muted-2); line-height: 1.75; flex: 1; margin-bottom: 1.25rem; }
@@ -398,8 +398,8 @@ body::before {
 }
 .tl-header { margin-bottom: 0.6rem; }
 .tl-company {
-  font-family: var(--font-display); font-style: italic; font-weight: 600;
-  font-size: 1.3rem; color: var(--pink); line-height: 1.15;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 0.95rem; color: var(--pink); line-height: 1.35;
 }
 .tl-role { font-size: 0.9rem; color: var(--text); font-weight: 400; }
 .tl-period {
@@ -415,9 +415,9 @@ body::before {
 /* Education in resume */
 .edu-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem; }
 .edu-item { padding: 1.1rem 1.35rem; background: var(--bg-3); border: 1px solid var(--rule); border-radius: var(--radius-lg); }
-.edu-inst { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 1.2rem; color: var(--text); }
+.edu-inst { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; color: var(--text); line-height: 1.4; }
 .edu-degree { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.05em; }
-.edu-score { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 1.5rem; color: var(--coral); margin-top: 0.25rem; }
+.edu-score { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--coral); margin-top: 0.4rem; }
 
 /* Skills in resume sidebar */
 .resume-skills { display: flex; flex-direction: column; gap: 2rem; }
@@ -455,7 +455,7 @@ body::before {
   transition: background 0.2s, color 0.2s;
 }
 .cfd-gh-link:hover { background: var(--accent-dim); color: var(--text); }
-.cfd-title { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 1.4rem; color: var(--text); line-height: 1.15; }
+.cfd-title { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--text); line-height: 1.4; }
 .cfd-desc { font-size: 0.84rem; font-weight: 300; color: var(--muted-2); line-height: 1.75; }
 .cfd-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 .cfd-spec { border-left: 2px solid rgba(98,208,232,0.4); padding-left: 0.75rem; }
@@ -475,8 +475,8 @@ footer {
 }
 .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
 .footer-name {
-  font-family: var(--font-display); font-style: italic; font-weight: 700;
-  font-size: 2.6rem;
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 1.7rem;
   background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .footer-sub { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
@@ -524,7 +524,7 @@ footer {
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .hamburger { display: flex; }
-  .hero-name { font-size: clamp(3.2rem, 15vw, 5.5rem); }
+  .hero-name { font-size: clamp(1.9rem, 8.5vw, 3rem); }
   .lb-arrow { display: none; }
 }
 </style>
@@ -578,7 +578,7 @@ footer {
     <div class="hero-bottom">
       <div class="hero-stats">
         <div>
-          <div class="hero-stat-val">4.5<span style="font-size:1rem;color:var(--muted)"> Cr</span></div>
+          <div class="hero-stat-val">3.5<span style="font-size:1rem;color:var(--muted)"> Cr</span></div>
           <div class="hero-stat-label">Bin-wash system value</div>
         </div>
         <div>
@@ -611,17 +611,16 @@ footer {
     </div>
     <div class="about-grid">
       <div class="about-bio reveal">
-        <p>Early-career mechanical engineer with <strong>end-to-end design ownership</strong> of pharma capital equipment, competitive motorsport CAE, and precision CNC machining. Based in Pune, India.</p>
-        <p>At Glatt Systems, I held sole design responsibility for a <strong>₹4.5 Cr total-containment bin-washing system</strong> — from concept through detailed drawings and manufacturing release, coordinating procurement, vendors, and a cross-functional project team. Potent API containment made leak-path elimination and cleanability the primary constraints.</p>
-        <p>Alongside product work, I write <strong>from-scratch CFD solvers</strong> in Python — Euler equations, finite-difference schemes for the Sod shock tube, lid-driven cavity flow — benchmarked against analytical solutions. Engineering by instinct, verified by numbers.</p>
+        <p>Mechanical engineer with a strong background in <strong>structural and thermal simulation</strong> and end-to-end product development — taking complex assemblies and novel joining systems from initial concept all the way to manufacturing release. Based in Pune, India.</p>
+        <p>At Glatt Systems, I took complete design ownership of a <strong>₹3.5 Cr containment bin-washing solution</strong> for highly potent APIs — a structure over 9 metres tall, partially embedded in the ground, washing bins from 600 to 2500 litres. I delivered the full design package and BOMs from scratch while coordinating procurement and manufacturing.</p>
+        <p>Alongside product work, I bring a digital mindset to engineering: <strong>from-scratch CFD solvers</strong> in Python, physics-informed neural networks (PINNs), and SPH simulation — benchmarked against analytical solutions. Engineering by instinct, verified by numbers.</p>
         <div class="about-chips" style="margin-top:1.5rem;">
           <span class="chip">Autodesk Inventor</span>
-          <span class="chip">ANSYS FEA/Thermal</span>
-          <span class="chip">GD&amp;T ASME Y14.5</span>
-          <span class="chip">Python CFD</span>
-          <span class="chip">SS316 Fabrication</span>
+          <span class="chip">SolidWorks</span>
+          <span class="chip">ANSYS FEA / CFD</span>
+          <span class="chip">Python · PINN / SPH</span>
+          <span class="chip">DVPR / DFMEA</span>
           <span class="chip">FDM / SLA AM</span>
-          <span class="chip">CNC VMC850</span>
           <span class="chip">Vault PDM</span>
         </div>
       </div>
@@ -673,15 +672,15 @@ footer {
         <div class="card-body">
           <div class="card-index">PROJECT 01 · FEATURED</div>
           <div class="card-tags"><span class="tag">Containment Design</span><span class="tag">SS316</span><span class="tag">Pharma</span></div>
-          <div class="card-title">Total-Containment Bin Washing System</div>
-          <p class="card-desc">Sole design ownership of a high-value total-containment bin-washing system for potent API bins at Glatt Systems. Delivered the complete design package from concept through detailed drawings, coordinating procurement, vendors, and the wider project team to manufacturing release. Potent API containment makes leak-path elimination and cleanability the primary design constraints.</p>
+          <div class="card-title">Containment Bin Washing System</div>
+          <p class="card-desc">Complete design ownership of a first-of-its-kind containment bin-washing solution for highly potent APIs at Glatt Systems. The structure stands over 9 metres tall, is partially embedded in the ground with specialized containment valves, and washes bins from 600 to 2500 litres. Delivered the full design package and BOMs from scratch while coordinating both procurement and manufacturing.</p>
           <div class="spec-block">
             <div class="spec-label">Specification Gist</div>
-            <div class="spec-row"><span class="spec-key">Value</span><span class="spec-val">INR 4.5 Cr total-containment system</span></div>
-            <div class="spec-row"><span class="spec-key">Material</span><span class="spec-val">SS316 structural + contact surfaces</span></div>
-            <div class="spec-row"><span class="spec-key">Scope</span><span class="spec-val">Concept to drawing release; procurement coordination</span></div>
-            <div class="spec-row"><span class="spec-key">Constraint</span><span class="spec-val">Potent API containment; full wash-cycle validation</span></div>
-            <div class="spec-row"><span class="spec-key">Tools</span><span class="spec-val">Autodesk Inventor, Vault PDM, GD&amp;T (ASME Y14.5)</span></div>
+            <div class="spec-row"><span class="spec-key">Value</span><span class="spec-val">INR 3.5 Cr containment system</span></div>
+            <div class="spec-row"><span class="spec-key">Structure</span><span class="spec-val">9+ m tall, partially ground-embedded, containment valves</span></div>
+            <div class="spec-row"><span class="spec-key">Bin range</span><span class="spec-val">600 – 2500 L</span></div>
+            <div class="spec-row"><span class="spec-key">Scope</span><span class="spec-val">Full design package + BOMs; procurement &amp; manufacturing coordination</span></div>
+            <div class="spec-row"><span class="spec-key">Tools</span><span class="spec-val">Autodesk Inventor, Vault PDM</span></div>
           </div>
         </div>
       </div>
@@ -689,13 +688,13 @@ footer {
       <!-- 02 -->
       <div class="card reveal">
         <div class="card-img" data-gallery='["iep-1.jpg","iep-2.jpg"]'>
-          <img src="images/iep-1.jpg" alt="Glatt iEP integrated lab-scale extruder-pelletiser" loading="lazy">
+          <img src="images/iep-1.jpg" alt="Glatt iEP lab-scale extruder spheronizer" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-index">PROJECT 02 · GLATT IEP</div>
           <div class="card-tags"><span class="tag">Design Ownership</span><span class="tag">Solo Project</span><span class="tag">First-of-Kind</span></div>
-          <div class="card-title">iEP — Integrated Lab-Scale Extruder-Pelletiser</div>
-          <p class="card-desc">Sole design owner of the Glatt iEP, a first-of-its-kind vertical integrated lab-scale extruder and pelletiser, from concept through manufacturing release. Independently managed manufacturing, testing, and process improvement iterations. The tool-less, all-in-one design allows rapid changeover between pharmaceutical formulations without disassembly.</p>
+          <div class="card-title">iEP — Lab-Scale Extruder Spheronizer</div>
+          <p class="card-desc">Design ownership of the Glatt iEP, a first-of-its-kind vertical integrated lab-scale extruder spheronizer, guided through its complete development cycle — mechanical CAD, manufacturing, functional testing, and presentation at industry exhibitions. The tool-less, all-in-one design allows rapid changeover between pharmaceutical formulations without disassembly.</p>
           <div class="spec-block">
             <div class="spec-label">Specification Gist</div>
             <div class="spec-row"><span class="spec-key">Role</span><span class="spec-val">Design ownership, manufacturing mgmt., testing &amp; process improvement (solo)</span></div>
@@ -703,7 +702,7 @@ footer {
             <div class="spec-row"><span class="spec-key">Changeover</span><span class="spec-val">Tool-less, fully integrated all-in-one package</span></div>
             <div class="spec-row"><span class="spec-key">Drive</span><span class="spec-val">Servo-motor driven</span></div>
             <div class="spec-row"><span class="spec-key">Materials</span><span class="spec-val">Venlafaxine, tamsulosin, and other pharmaceutical actives</span></div>
-            <div class="spec-row"><span class="spec-key">Innovation</span><span class="spec-val">First-of-its-kind vertical integrated extruder-pelletiser</span></div>
+            <div class="spec-row"><span class="spec-key">Innovation</span><span class="spec-val">First-of-its-kind vertical integrated extruder spheronizer</span></div>
           </div>
         </div>
       </div>
@@ -791,15 +790,15 @@ footer {
         </div>
         <div class="card-body">
           <div class="card-index">PROJECT 07</div>
-          <div class="card-tags"><span class="tag">Precision Machining</span><span class="tag">Propulsion</span></div>
+          <div class="card-tags"><span class="tag">Propulsion</span><span class="tag">Personal Project</span></div>
           <div class="card-title">IPA–Air Rocket Engine Nozzle</div>
-          <p class="card-desc">Designed a converging-diverging nozzle for 300 N sea-level thrust using isopropyl alcohol-air propellant. CNC-machined in mild steel on a Jyoti VMC850, including fixturing design, toolpath programming in CAM, and post-test failure analysis.</p>
+          <p class="card-desc">Designed a converging-diverging nozzle for 300 N sea-level thrust using isopropyl alcohol-air propellant. Machined the mild steel nozzle on a Jyoti VMC850, handling the fixturing design and toolpath programming, with post-test failure analysis using DFMEA concepts.</p>
           <div class="spec-block">
             <div class="spec-label">Specification Gist</div>
             <div class="spec-row"><span class="spec-key">Design thrust</span><span class="spec-val">300 N sea-level</span></div>
             <div class="spec-row"><span class="spec-key">Propellant</span><span class="spec-val">Isopropyl alcohol — air</span></div>
             <div class="spec-row"><span class="spec-key">Geometry</span><span class="spec-val">Converging-diverging (De Laval)</span></div>
-            <div class="spec-row"><span class="spec-key">Machine</span><span class="spec-val">Jyoti VMC850; fixturing + toolpath programmed</span></div>
+            <div class="spec-row"><span class="spec-key">Post-test</span><span class="spec-val">Failure analysis using DFMEA concepts</span></div>
           </div>
         </div>
       </div>
@@ -813,13 +812,13 @@ footer {
           <div class="card-index">PROJECT 08 · INTERNSHIP</div>
           <div class="card-tags"><span class="tag">Thermal Audit</span><span class="tag">Heavy Industry</span><span class="tag">EAF</span></div>
           <div class="card-title">35T Electric Arc Furnace — Cooling Circuit Audit</div>
-          <p class="card-desc">Audited the water-cooling circuit of a 35T Electric Arc Furnace and continuous casting line at Saarloha Advanced Materials. Quantified thermal losses from slag deposition on cooling panels via analysis of 30+ research papers and plant instrumentation data. Produced a structured improvement report with design modification recommendations.</p>
+          <p class="card-desc">Surveyed the water-cooling circuit of a 35T Electric Arc Furnace and continuous casting line at Saarloha Advanced Materials, using plant instrumentation data to identify thermal loss pathways caused by slag deposition on the cooling panels. Delivered a structured improvement report proposing design modifications to reduce parasitic heat losses, aligning with the site's green manufacturing targets.</p>
           <div class="spec-block">
             <div class="spec-label">Specification Gist</div>
             <div class="spec-row"><span class="spec-key">Equipment</span><span class="spec-val">35T EAF + continuous casting line</span></div>
-            <div class="spec-row"><span class="spec-key">Focus</span><span class="spec-val">Slag deposition thermal loss quantification</span></div>
-            <div class="spec-row"><span class="spec-key">Method</span><span class="spec-val">30+ research papers + plant instrumentation data</span></div>
-            <div class="spec-row"><span class="spec-key">Output</span><span class="spec-val">Structured improvement report + design modifications</span></div>
+            <div class="spec-row"><span class="spec-key">Focus</span><span class="spec-val">Thermal loss pathways from slag deposition</span></div>
+            <div class="spec-row"><span class="spec-key">Method</span><span class="spec-val">Plant instrumentation data analysis</span></div>
+            <div class="spec-row"><span class="spec-key">Output</span><span class="spec-val">Improvement report; green manufacturing alignment</span></div>
           </div>
         </div>
       </div>
@@ -850,15 +849,16 @@ footer {
             <div class="tl-dot"></div>
             <div class="tl-header">
               <div class="tl-company">Glatt Systems</div>
-              <div class="tl-role">Engineering Trainee</div>
+              <div class="tl-role">Engineering Trainee — New Product Development</div>
             </div>
             <div class="tl-period">Jun 2025 — Present · Pune, IN</div>
             <ul class="tl-points">
-              <li>Design ownership of INR 4.5 Cr total-containment bin-washing system; complete package through manufacturing release, coordinating procurement and project team.</li>
-              <li>Novel SS316 ducting joining system for pharma process air; prototype qualification-tested at 2 bar; targets elimination of legacy flanged-joint assembly.</li>
-              <li>Structural design contribution to 3-story all-steel vertical granulation line for pre-production validation; 4-member core team across mech, process, and controls.</li>
-              <li>Managed ECNs across active design packages via Vault PDM with revision-controlled drawing releases to vendors and manufacturing.</li>
-              <li>Direct manufacturing floor exposure across fabrication, assembly, and inspection; GD&amp;T standards across 100+ part assemblies.</li>
+              <li>Designed a novel SS316 ducting joining system to eliminate legacy flanged connections; qualified the prototype at 2 bar in a single-connection acceptance test as part of the DVPR process.</li>
+              <li>Complete design ownership of a first-of-its-kind containment bin-washing solution for highly potent APIs, valued at INR 3.5 Cr — 9+ m tall, partially ground-embedded, washing 600–2500 L bins; delivered full design package and BOMs from scratch.</li>
+              <li>Design ownership of a new lab-scale extruder spheronizer through its complete development cycle — mechanical CAD, manufacturing, functional testing, and presentation at industry exhibitions.</li>
+              <li>Managed Change Requests and Change Orders across active design packages; tracked revision-controlled drawing releases through Vault PDM with vendors and the shop floor.</li>
+              <li>Incorporated shop-floor feedback to improve manufacturing processes across machining, sheet metal, and joining, with clear engineering calculations and tolerance stack-up documentation.</li>
+              <li>Contributed structural design to a 3-story all-steel vertical granulation line, collaborating across mechanical and process sub-teams through pre-production validation.</li>
             </ul>
           </div>
 
@@ -870,8 +870,8 @@ footer {
             </div>
             <div class="tl-period">Jun 2024 — Aug 2024 · Pune, IN</div>
             <ul class="tl-points">
-              <li>Audited water-cooling circuit of a 35T EAF and continuous casting line; quantified slag-deposition thermal losses via 30+ research papers and plant data.</li>
-              <li>Produced structured improvement report with recommended design modifications to reduce parasitic heat losses in the EAF water-cooling loop.</li>
+              <li>Surveyed the water-cooling circuit of a 35T EAF and continuous casting line; identified thermal loss pathways from slag deposition using plant instrumentation data.</li>
+              <li>Delivered a structured improvement report proposing design modifications to reduce parasitic heat losses, aligning with the site's green manufacturing targets.</li>
             </ul>
           </div>
 
@@ -879,9 +879,9 @@ footer {
             <div class="tl-dot"></div>
             <div class="tl-header">
               <div class="tl-company">VJTI Racing</div>
-              <div class="tl-role">Thermal Systems Lead</div>
+              <div class="tl-role">Thermal Systems &amp; Electronics</div>
             </div>
-            <div class="tl-period">Jun 2022 — Mar 2024 · Mumbai, IN</div>
+            <div class="tl-period">Jan 2022 — Mar 2024 · Mumbai, IN</div>
             <ul class="tl-points">
               <li>Jet-impingement cooling enclosure for motor controller (SLA/FDM AM); 500 g; target −25 °C vs. baseline air-cooled config.</li>
               <li>Low-loss manifold geometry minimising static pressure drop, reducing auxiliary battery load.</li>
@@ -912,6 +912,24 @@ footer {
             </div>
           </div>
         </div>
+
+        <div style="margin-top:3rem;">
+          <div class="section-label reveal" style="margin-bottom:1.25rem;">Licenses &amp; Certifications</div>
+          <div class="edu-list">
+            <div class="edu-item reveal">
+              <div class="edu-inst">Applied Computational Fluid Dynamics</div>
+              <div class="edu-degree">Siemens · Apr 2026</div>
+            </div>
+            <div class="edu-item reveal reveal-d1">
+              <div class="edu-inst">Cleanroom Fundamentals &amp; Semiconductor Technologies</div>
+              <div class="edu-degree">University at Buffalo · Apr 2026</div>
+            </div>
+            <div class="edu-item reveal reveal-d2">
+              <div class="edu-inst">SOLIDWORKS: Design Study and Optimization</div>
+              <div class="edu-degree">LinkedIn Learning · Jun 2023</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- RIGHT: skills -->
@@ -919,30 +937,29 @@ footer {
         <div>
           <div class="rs-group-title">CAD / PDM</div>
           <div class="rs-item"><span class="rs-name">Autodesk Inventor</span><div class="rs-bar"><div class="rs-fill" style="width:85%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">SolidWorks</span><div class="rs-bar"><div class="rs-fill" style="width:60%"></div></div></div>
           <div class="rs-item"><span class="rs-name">Vault PDM</span><div class="rs-bar"><div class="rs-fill" style="width:80%"></div></div></div>
-          <div class="rs-item"><span class="rs-name">Fusion 360</span><div class="rs-bar"><div class="rs-fill" style="width:65%"></div></div></div>
-          <div class="rs-item"><span class="rs-name">SolidWorks</span><div class="rs-bar"><div class="rs-fill" style="width:50%"></div></div></div>
-          <div class="rs-item"><span class="rs-name">GD&amp;T ASME Y14.5</span><div class="rs-bar"><div class="rs-fill" style="width:75%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">Fusion 360</span><div class="rs-bar"><div class="rs-fill" style="width:60%"></div></div></div>
         </div>
         <div>
-          <div class="rs-group-title">Simulation / CAE</div>
-          <div class="rs-item"><span class="rs-name">ANSYS Structural</span><div class="rs-bar"><div class="rs-fill" style="width:75%"></div></div></div>
-          <div class="rs-item"><span class="rs-name">ANSYS Thermal</span><div class="rs-bar"><div class="rs-fill" style="width:70%"></div></div></div>
-          <div class="rs-item"><span class="rs-name">ANSYS Fluent CFD</span><div class="rs-bar"><div class="rs-fill" style="width:55%"></div></div></div>
+          <div class="rs-group-title">Simulation &amp; AI</div>
+          <div class="rs-item"><span class="rs-name">ANSYS Mechanical</span><div class="rs-bar"><div class="rs-fill" style="width:75%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">ANSYS Fluent</span><div class="rs-bar"><div class="rs-fill" style="width:65%"></div></div></div>
           <div class="rs-item"><span class="rs-name">MATLAB / Simulink</span><div class="rs-bar"><div class="rs-fill" style="width:60%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">Python · PINN / SPH</span><div class="rs-bar"><div class="rs-fill" style="width:60%"></div></div></div>
+        </div>
+        <div>
+          <div class="rs-group-title">Standards &amp; Methods</div>
+          <div class="rs-item"><span class="rs-name">DVPR / DFMEA</span><div class="rs-bar"><div class="rs-fill" style="width:70%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">Tolerance Stack-up</span><div class="rs-bar"><div class="rs-fill" style="width:70%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">BOM / Change Mgmt</span><div class="rs-bar"><div class="rs-fill" style="width:75%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">GD&amp;T (ASME Y14)</span><div class="rs-bar"><div class="rs-fill" style="width:60%"></div></div></div>
         </div>
         <div>
           <div class="rs-group-title">Manufacturing</div>
-          <div class="rs-item"><span class="rs-name">CNC VMC850</span><div class="rs-bar"><div class="rs-fill" style="width:65%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">Sheet Metal / Joining</span><div class="rs-bar"><div class="rs-fill" style="width:70%"></div></div></div>
           <div class="rs-item"><span class="rs-name">FDM / SLA AM</span><div class="rs-bar"><div class="rs-fill" style="width:70%"></div></div></div>
-          <div class="rs-item"><span class="rs-name">SS316 Fabrication</span><div class="rs-bar"><div class="rs-fill" style="width:65%"></div></div></div>
-          <div class="rs-item"><span class="rs-name">ECN / Change Mgmt</span><div class="rs-bar"><div class="rs-fill" style="width:75%"></div></div></div>
-        </div>
-        <div>
-          <div class="rs-group-title">Computation</div>
-          <div class="rs-item"><span class="rs-name">Python (NumPy)</span><div class="rs-bar"><div class="rs-fill" style="width:60%"></div></div></div>
-          <div class="rs-item"><span class="rs-name">CFD Numerics</span><div class="rs-bar"><div class="rs-fill" style="width:65%"></div></div></div>
-          <div class="rs-item"><span class="rs-name">MATLAB</span><div class="rs-bar"><div class="rs-fill" style="width:60%"></div></div></div>
+          <div class="rs-item"><span class="rs-name">Machining / Fixturing</span><div class="rs-bar"><div class="rs-fill" style="width:55%"></div></div></div>
         </div>
       </div>
 
@@ -1037,6 +1054,60 @@ U[:, 1:-1] = 0.5*(U[:, 1:-1] + U_pred[:, 1:-1]
         - CFL*(u[1:-1] - u[:-2])         <span class="tok-cmt"># upwind convection</span>
         + (dt*nu/dx**2)*(u[2:] - 2*u[1:-1] + u[:-2])) <span class="tok-cmt"># diffusion</span>
     u = u_new.copy()</code></pre>
+        </div>
+      </div>
+
+      <div class="cfd-card reveal">
+        <div class="cfd-header">
+          <div class="cfd-index">CFD 03 · CAPSTONE, VJTI</div>
+        </div>
+        <div class="cfd-title">Numerical Investigation of Lattice-Based Cooling Structures</div>
+        <div class="card-tags"><span class="tag">ANSYS Fluent</span><span class="tag">Mesh Convergence</span><span class="tag">Heat Transfer</span></div>
+        <p class="cfd-desc">Developed and meshed lattice unit-cell geometries in ANSYS Fluent, conducting mesh convergence studies to understand convective heat transfer enhancements and pressure-drop trade-offs across various candidate topologies.</p>
+        <div class="cfd-specs">
+          <div class="cfd-spec">
+            <div class="cfd-spec-label">Solver</div>
+            <div class="cfd-spec-val">ANSYS Fluent (conjugate heat transfer)</div>
+          </div>
+          <div class="cfd-spec">
+            <div class="cfd-spec-label">Geometry</div>
+            <div class="cfd-spec-val">Lattice unit cells, multiple candidate topologies</div>
+          </div>
+          <div class="cfd-spec">
+            <div class="cfd-spec-label">Method</div>
+            <div class="cfd-spec-val">Mesh convergence studies</div>
+          </div>
+          <div class="cfd-spec">
+            <div class="cfd-spec-label">Output</div>
+            <div class="cfd-spec-val">Heat transfer enhancement vs. pressure-drop trade-offs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cfd-card reveal reveal-d1">
+        <div class="cfd-header">
+          <div class="cfd-index">FEA 04 · HONOURS, VJTI</div>
+        </div>
+        <div class="cfd-title">Compressive Behavior of Vertically Graded Lattice Structures</div>
+        <div class="card-tags"><span class="tag">ANSYS Mechanical</span><span class="tag">Lattices</span><span class="tag">Energy Absorption</span></div>
+        <p class="cfd-desc">Modeled graded-density lattice structures under uniaxial compression using ANSYS Mechanical, extracting load-displacement curves via structural FEA to quantify their energy absorption.</p>
+        <div class="cfd-specs">
+          <div class="cfd-spec">
+            <div class="cfd-spec-label">Solver</div>
+            <div class="cfd-spec-val">ANSYS Mechanical (structural FEA)</div>
+          </div>
+          <div class="cfd-spec">
+            <div class="cfd-spec-label">Loading</div>
+            <div class="cfd-spec-val">Uniaxial compression</div>
+          </div>
+          <div class="cfd-spec">
+            <div class="cfd-spec-label">Geometry</div>
+            <div class="cfd-spec-val">Vertically graded-density lattices</div>
+          </div>
+          <div class="cfd-spec">
+            <div class="cfd-spec-label">Output</div>
+            <div class="cfd-spec-val">Load-displacement curves; energy absorption quantification</div>
+          </div>
         </div>
       </div>
 
