@@ -195,18 +195,7 @@ body::before {
 }
 
 .hero-bottom {
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 3rem; align-items: flex-end;
   border-top: 1px solid var(--rule); padding-top: 2rem;
-}
-.hero-stats { display: flex; gap: 3rem; }
-.hero-stat-val {
-  font-family: var(--font-display); font-weight: 700;
-  font-size: 1.4rem; color: var(--coral); line-height: 1.15;
-}
-.hero-stat-label {
-  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--muted); margin-top: 0.35rem;
 }
 .hero-actions { display: flex; gap: 0.75rem; flex-shrink: 0; }
 .btn {
@@ -513,8 +502,6 @@ footer {
   .resume-layout { grid-template-columns: 1fr; }
   .cfd-grid { grid-template-columns: 1fr; }
   .cfd-specs { grid-template-columns: 1fr; }
-  .hero-bottom { grid-template-columns: 1fr; gap: 2rem; }
-  .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-links { justify-content: flex-start; }
 }
@@ -576,20 +563,6 @@ footer {
     <h1 class="hero-name">ANISH<br><span>DHAR</span></h1>
     <p class="hero-role">Mechanical Engineer &middot; Pune, India &middot; Pharma &middot; Motorsport &middot; CFD</p>
     <div class="hero-bottom">
-      <div class="hero-stats">
-        <div>
-          <div class="hero-stat-val">9<span style="font-size:1rem;color:var(--muted)"> m</span></div>
-          <div class="hero-stat-label">Containment structure height</div>
-        </div>
-        <div>
-          <div class="hero-stat-val">AIR 1</div>
-          <div class="hero-stat-label">SAE e-BAJA Sales Pres.</div>
-        </div>
-        <!--<div>
-          <div class="hero-stat-val">300<span style="font-size:1rem;color:var(--muted)">N</span></div>
-          <div class="hero-stat-label">Rocket nozzle thrust</div>
-        </div>-->
-      </div>
       <div class="hero-actions">
         <a href="Resume.pdf" download class="btn btn-primary">&#8595; Download Resume</a>
         <a href="#projects" class="btn btn-ghost">View Projects &#8595;</a>
@@ -612,8 +585,8 @@ footer {
     <div class="about-grid">
       <div class="about-bio reveal">
         <p>Mechanical engineer with a strong background in <strong>structural and thermal simulation</strong> and end-to-end product development — taking complex assemblies and novel joining systems from initial concept all the way to manufacturing release. Based in Pune, India.</p>
-        <p>At Glatt Systems, I took complete design ownership of a <strong>first-of-its-kind containment bin-washing solution</strong> for highly potent APIs — a structure over 9 metres tall, partially embedded in the ground, with specialised containment valves, washing bins from 600 to 2500 litres. I delivered the full design package and BOMs from scratch while coordinating procurement and manufacturing.</p>
-        <p>Alongside product work, I bring a digital mindset to engineering: <strong>from-scratch CFD solvers</strong> in Python, physics-informed neural networks (PINNs), and SPH simulation — benchmarked against analytical solutions. Engineering by instinct, verified by numbers.</p>
+        <p>At Glatt Systems, I took complete design ownership of a <strong>first-of-its-kind containment bin-washing solution</strong> for highly potent APIs — a structure over 9 metres tall, partially embedded in the ground, with specialised containment valves, washing bins from 600 to 2500 litres — and of the <strong>Glatt iEP lab-scale extruder spheronizer</strong>, guided through its full development cycle from mechanical CAD to manufacturing, functional testing, and exhibition. I delivered the full design packages and BOMs from scratch while coordinating procurement and manufacturing.</p>
+        <p>Alongside product work, I bring a digital mindset to engineering: <strong>from-scratch CFD solvers</strong> in Python. Engineering by instinct, verified by numbers.</p>
         <div class="about-chips" style="margin-top:1.5rem;">
           <span class="chip">Autodesk Inventor</span>
           <span class="chip">SolidWorks</span>
@@ -770,9 +743,9 @@ footer {
         </div>
         <div class="card-body">
           <div class="card-index">PROJECT 06 · VJTI RACING</div>
-          <div class="card-tags"><span class="tag">EV Systems</span><span class="tag">HV/LV Design</span><span class="tag">ISIE IKR</span></div>
-          <div class="card-title">EV Powertrain &amp; Electrical Systems — ISIE IKR 2023</div>
-          <p class="card-desc">Led low- and high-voltage system design for VJTI Racing's ISIE IKR 2023 EV entry. Implemented a multi-layer startup interlock sequence for HV safety. Recognised with Best Accelerating Vehicle, Best Business Proposal, and AIR 5 EV category.</p>
+          <div class="card-tags"><span class="tag">EV Systems</span><span class="tag">HV/LV Design</span><span class="tag">SAE e-BAJA</span><span class="tag">ISIE IKR</span></div>
+          <div class="card-title">EV Powertrain &amp; Electrical Systems — SAE e-BAJA &amp; ISIE IKR 2023</div>
+          <p class="card-desc">Led low- and high-voltage electrical system design for VJTI Racing across the SAE e-BAJA/ATVC and ISIE IKR 2023 EV entries. Implemented a multi-layer startup interlock sequence for HV safety. Recognised with Best Accelerating Vehicle, Best Business Proposal, and AIR 5 EV category.</p>
           <div class="spec-block">
             <div class="spec-label">Specification Gist</div>
             <div class="spec-row"><span class="spec-key">Scope</span><span class="spec-val">LV + HV system design lead</span></div>
@@ -791,7 +764,7 @@ footer {
           <div class="card-index">PROJECT 07</div>
           <div class="card-tags"><span class="tag">Propulsion</span><span class="tag">Personal Project</span></div>
           <div class="card-title">IPA–Air Rocket Engine Nozzle</div>
-          <p class="card-desc">Designed a converging-diverging nozzle for 300 N sea-level thrust using isopropyl alcohol-air propellant. Validated the internal flow geometry with a clear-resin printed prototype before machining the final nozzle in mild steel on a Jyoti VMC850, handling the fixturing design and toolpath programming, with post-test failure analysis using DFMEA concepts.</p>
+          <p class="card-desc">Designed a converging-diverging nozzle for 300 N sea-level thrust using isopropyl alcohol-air propellant. Validated the internal flow geometry with a clear-resin printed prototype before machining the final nozzle in mild steel on a Jyoti VMC850, handling the fixturing design and toolpath programming.</p>
           <div class="spec-block">
             <div class="spec-label">Specification Gist</div>
             <div class="spec-row"><span class="spec-key">Design thrust</span><span class="spec-val">300 N sea-level</span></div>
